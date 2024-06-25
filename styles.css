@@ -20,6 +20,10 @@ header {
 nav {
     background-color: #343a40;
     padding: 10px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 nav ul {
@@ -27,11 +31,11 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    margin: 5px; /* Adjust margins for spacing */
+    margin: 5px;
 }
 
 nav ul li a {
@@ -53,9 +57,9 @@ nav input[type="text"] {
     border: none;
     border-radius: 4px;
     margin-top: 10px;
-    display: block; /* Stack search input below navigation items */
-    width: calc(100% - 40px); /* Adjust width to fit within padding */
-    margin: 10px auto; /* Center the search input */
+    display: block;
+    width: calc(100% - 40px);
+    margin: 10px auto;
 }
 
 main {
@@ -95,24 +99,52 @@ main {
     margin-right: 10px;
 }
 
-/* Media query for smaller screens */
+/* Hamburger menu style */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 600px) {
     nav ul {
-        flex-direction: column; /* Stack navigation items vertically */
-        align-items: center; /* Center navigation items */
+        flex-direction: column;
+        align-items: center;
     }
 
     nav ul li {
-        margin: 10px 0; /* Adjust margins for smaller screens */
+        margin: 10px 0;
     }
 
     nav input[type="text"] {
-        width: 90%; /* Adjust width to fit within smaller screens */
+        width: 90%;
     }
 
     nav ul li a {
-        padding: 10px 20px; /* Increase padding for better readability */
-        width: 100%; /* Ensure links take up the full width */
-        text-align: center; /* Center-align text */
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul.show {
+        display: flex;
     }
 }
+
