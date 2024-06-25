@@ -31,14 +31,14 @@ nav ul {
 }
 
 nav ul li {
-    margin: 10px 10px; /* Adjust margins for spacing */
+    margin: 5px; /* Adjust margins for spacing */
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 15px;
+    padding: 10px;
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -49,10 +49,10 @@ nav ul li a:hover {
 }
 
 nav input[type="text"] {
-    margin: 20px 0;
     padding: 5px;
     border: none;
     border-radius: 4px;
+    margin-top: 10px;
     display: block; /* Stack search input below navigation items */
     width: calc(100% - 40px); /* Adjust width to fit within padding */
     margin: 10px auto; /* Center the search input */
@@ -103,10 +103,16 @@ main {
     }
 
     nav ul li {
-        margin: 5px 0; /* Reduce margins for smaller screens */
+        margin: 10px 0; /* Adjust margins for smaller screens */
     }
 
     nav input[type="text"] {
         width: 90%; /* Adjust width to fit within smaller screens */
+    }
+
+    nav ul li a {
+        padding: 10px 20px; /* Increase padding for better readability */
+        width: 100%; /* Ensure links take up the full width */
+        text-align: center; /* Center-align text */
     }
 }
