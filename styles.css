@@ -171,15 +171,26 @@ footer {
     margin-top: 20px;
 }
 
+footer .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 footer .social-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
+    margin: 5px 10px;
+    white-space: nowrap;
 }
 
 footer .social-links a:hover {
     color: #007bff;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    footer .social-links a {
+        margin: 5px 0;
+    }
 }
 
 .contact-section {
