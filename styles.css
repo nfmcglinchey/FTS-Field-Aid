@@ -27,10 +27,11 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
 }
 
 nav ul li {
-    margin-right: 20px;
+    margin: 10px 10px; /* Adjust margins for spacing */
 }
 
 nav ul li a {
@@ -48,10 +49,13 @@ nav ul li a:hover {
 }
 
 nav input[type="text"] {
-    margin-left: 20px;
+    margin: 20px 0;
     padding: 5px;
     border: none;
     border-radius: 4px;
+    display: block; /* Stack search input below navigation items */
+    width: calc(100% - 40px); /* Adjust width to fit within padding */
+    margin: 10px auto; /* Center the search input */
 }
 
 main {
@@ -89,4 +93,20 @@ main {
 
 .collapsible .content ul li input {
     margin-right: 10px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column; /* Stack navigation items vertically */
+        align-items: center; /* Center navigation items */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Reduce margins for smaller screens */
+    }
+
+    nav input[type="text"] {
+        width: 90%; /* Adjust width to fit within smaller screens */
+    }
 }
