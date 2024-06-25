@@ -192,6 +192,10 @@ footer .social-links a {
     text-decoration: none;
 }
 
+footer .social-links a:visited {
+    color: white;
+}
+
 footer .social-links a:hover {
     color: #007bff;
 }
