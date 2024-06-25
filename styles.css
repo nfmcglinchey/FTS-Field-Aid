@@ -48,11 +48,13 @@ nav ul li a {
     padding: 10px;
     background-color: #007bff;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
 nav ul li a:hover {
     background-color: #0056b3;
+    color: yellow; /* Change text color */
+    border: 2px solid white; /* Add border */
 }
 
 nav input[type="text"] {
@@ -95,7 +97,7 @@ main {
     padding-left: 20px;
 }
 
-collapsible .content ul li {
+.collapsible .content ul li {
     margin-bottom: 10px;
 }
 
@@ -175,10 +177,15 @@ footer .social-links a {
     white-space: nowrap;
     color: white;
     text-decoration: none;
+    transition: color 0.3s, background-color 0.3s, padding 0.3s;
 }
 
 footer .social-links a:hover {
     color: #007bff;
+    text-decoration: underline; /* Add underline */
+    background-color: #f1f1f1; /* Change background color */
+    padding: 5px; /* Add padding for better visibility */
+    border-radius: 3px; /* Optional: add border-radius for rounded corners */
 }
 
 /* Media query for smaller screens */
@@ -229,6 +236,16 @@ footer .social-links a:hover {
     transition: background-color 0.3s;
 }
 
-contact-section button:hover {
+.contact-section button:hover {
     background-color: #0056b3;
 }
+
+/* Add hover effect for other links in the contact section */
+.contact-section a:hover {
+    color: #007bff;
+    text-decoration: underline;
+    background-color: #f1f1f1;
+    padding: 5px;
+    border-radius: 3px;
+}
+
