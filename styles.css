@@ -95,7 +95,7 @@ main {
     padding-left: 20px;
 }
 
-.collapsible .content ul li {
+collapsible .content ul li {
     margin-bottom: 10px;
 }
 
@@ -192,12 +192,8 @@ footer .social-links a {
     text-decoration: none;
 }
 
-footer .social-links a:visited {
-    color: white;
-}
-
 footer .social-links a:hover {
-    color: #007bff;
+    color: white;
 }
 
 /* Media query for smaller screens */
@@ -248,6 +244,6 @@ footer .social-links a:hover {
     transition: background-color 0.3s;
 }
 
-.contact-section button:hover {
+contact-section button:hover {
     background-color: #0056b3;
 }
