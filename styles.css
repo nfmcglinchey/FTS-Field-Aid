@@ -188,6 +188,8 @@ footer .social-links {
 footer .social-links a {
     margin: 5px 10px;
     white-space: nowrap;
+    color: white;
+    text-decoration: none;
 }
 
 footer .social-links a:hover {
