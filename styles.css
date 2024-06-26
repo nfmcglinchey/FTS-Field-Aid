@@ -16,6 +16,8 @@ header {
     width: 100%; /* Ensure it covers the full width */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     margin: 0; /* Remove default margins */
+    z-index: 1000; /* Ensure header stays on top */
+    position: relative; /* Required for z-index to work */
 }
 
 .logo {
@@ -29,7 +31,7 @@ nav {
     position: sticky;
     top: 0;
     width: 100%; /* Ensure it covers the full width */
-    z-index: 1000;
+    z-index: 999; /* Ensure nav stays just below the header */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     margin: 0; /* Remove default margins */
 }
@@ -114,6 +116,7 @@ main {
     margin: 0 auto;
     text-align: center; /* Center the content */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    z-index: 1; /* Ensure it stays below the nav */
 }
 
 .collapsible .content nav ul {
@@ -212,6 +215,16 @@ main {
     nav ul.show {
         display: flex;
     }
+
+    .collapsible .content nav ul li {
+        flex: 1 1 100%; /* Ensure each item takes full width on mobile */
+        max-width: 100%; /* Ensure each item has a maximum width */
+    }
+
+    .collapsible .content nav ul li a {
+        width: 100%; /* Ensure full width for mobile */
+        height: auto; /* Adjust height for mobile */
+    }
 }
 
 footer {
@@ -302,8 +315,7 @@ footer .social-links a:hover {
 
 /* Add hover effect for other links in the contact section */
 .contact-section a:hover {
-    color
-: #007bff;
+    color: #007bff;
     text-decoration: underline;
     background-color: #f1f1f1;
     padding: 5px;
