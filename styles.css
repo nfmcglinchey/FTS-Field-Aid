@@ -208,6 +208,7 @@ main {
         padding: 10px 20px;
         width: 100%;
         text-align: center;
+        height: 50px; /* Set a consistent height for mobile */
     }
 
     .hamburger {
@@ -231,7 +232,7 @@ main {
 
     .collapsible .content nav ul li a {
         width: 100%; /* Ensure full width for mobile */
-        height: auto; /* Adjust height for mobile */
+        height: 50px; /* Ensure consistent height for mobile */
     }
 }
 
