@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Expand the target section
             const content = targetElement.querySelector('.content');
-            if (content.style.display !== 'block') {
+            if (content && content.style.display !== 'block') {
                 content.style.display = 'block';
             }
 
@@ -47,33 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Handle section checkbox based on subcategory checkboxes
-    const sections = document.querySelectorAll('.collapsible');
-    sections.forEach(section => {
-        const sectionCheckbox = section.querySelector('.section-checkbox');
-        const itemCheckboxes = section.querySelectorAll('.item-checkbox');
-
-        itemCheckboxes.forEach(itemCheckbox => {
-            itemCheckbox.addEventListener('change', () => {
-                const allChecked = Array.from(itemCheckboxes).every(cb => cb.checked);
-                sectionCheckbox.checked = allChecked;
-
-                // Collapse section if all checkboxes are checked
-                const content = section.querySelector('.content');
-                if (allChecked) {
-                    content.style.display = 'none';
-                }
-            });
-        });
-
-        sectionCheckbox.addEventListener('change', () => {
-            itemCheckboxes.forEach(cb => cb.checked = sectionCheckbox.checked);
-            const content = section.querySelector('.content');
-            if (sectionCheckbox.checked) {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
+    // Add event listeners for the FTS Tools links to open in a new tab
+    const ftsToolLinks = document.querySelectorAll('#fts-tools nav ul li a');
+    ftsToolLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetUrl = this.getAttribute('href');
+            window.open(targetUrl, '_blank');
         });
     });
 });
