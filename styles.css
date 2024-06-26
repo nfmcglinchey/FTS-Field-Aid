@@ -105,18 +105,18 @@ main {
 
 .collapsible .content {
     display: none;
-    padding-left: 20px;
+    padding: 10px; /* Ensure consistent padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .collapsible .content nav {
     background-color: #343a40; /* Dark gray background */
     padding: 10px;
     border-radius: 5px;
-    width: calc(100% - 20px); /* Adjust the width to fit within the parent container */
-    margin: 0 auto;
+    width: 100%; /* Ensure it covers the full width */
+    margin: 0; /* Remove default margins */
     text-align: center; /* Center the content */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    z-index: 1; /* Ensure it stays below the nav */
 }
 
 .collapsible .content nav ul {
@@ -129,7 +129,7 @@ main {
 }
 
 .collapsible .content nav ul li {
-    margin: 5px;
+    margin: 10px; /* Ensure consistent spacing between items */
     flex: 1 1 200px; /* Adjust the flex property to ensure even spacing */
     max-width: 200px; /* Ensure each item has a maximum width */
 }
