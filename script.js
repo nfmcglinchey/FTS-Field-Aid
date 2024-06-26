@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const collapsibleHeaders = document.querySelectorAll('.collapsible h2');
+    const sectionCheckboxes = document.querySelectorAll('.section-checkbox');
 
     collapsibleHeaders.forEach(header => {
         header.addEventListener('click', () => {
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            
+
             // Expand the target section
             const content = targetElement.querySelector('.content');
             if (content && content.style.display !== 'block') {
@@ -54,6 +55,28 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const targetUrl = this.getAttribute('href');
             window.open(targetUrl, '_blank');
+        });
+    });
+
+    // Functionality for section checkboxes
+    sectionCheckboxes.forEach(sectionCheckbox => {
+        sectionCheckbox.addEventListener('change', function () {
+            const section = this.closest('section');
+            const itemCheckboxes = section.querySelectorAll('.item-checkbox');
+            itemCheckboxes.forEach(itemCheckbox => {
+                itemCheckbox.checked = this.checked;
+            });
+        });
+    });
+
+    // Functionality for item checkboxes
+    const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+    itemCheckboxes.forEach(itemCheckbox => {
+        itemCheckbox.addEventListener('change', function () {
+            const section = this.closest('section');
+            const sectionCheckbox = section.querySelector('.section-checkbox');
+            const allChecked = section.querySelectorAll('.item-checkbox:checked').length === section.querySelectorAll('.item-checkbox').length;
+            sectionCheckbox.checked = allChecked;
         });
     });
 });
