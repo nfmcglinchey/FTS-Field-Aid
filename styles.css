@@ -184,7 +184,7 @@ ul ul {
 
     nav ul li {
         margin: 5px 0; /* Add vertical space between the list items */
-        width: 100%; /* Ensure the list items take full width */
+        width: calc(100% - 20px); /* Ensure the list items take full width within padding */
     }
 
     nav ul li a {
@@ -217,7 +217,7 @@ ul ul {
 }
 
 .collapsible .content nav ul li {
-    margin: 10px 0;
+    margin: 5px 0; /* Add less vertical space between the list items */
     width: 100%;
 }
 
@@ -230,7 +230,7 @@ ul ul {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
     display: block;
-    width: 100%;
+    width: calc(100% - 20px); /* Ensure the links fit within the gray area */
     text-align: center;
 }
 
