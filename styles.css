@@ -175,6 +175,9 @@ ul ul {
         display: none;
         flex-direction: column;
         width: 100%;
+        background-color: #343a40; /* Ensure the background color covers the full width */
+        padding: 0;
+        box-sizing: border-box;
     }
 
     nav ul.show {
@@ -183,6 +186,8 @@ ul ul {
 
     nav ul li {
         margin: 10px 0;
+        width: 100%; /* Ensure the list items take full width */
+        text-align: center; /* Center the text */
     }
 
     nav input[type="text"] {
