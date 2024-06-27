@@ -183,14 +183,14 @@ ul ul {
     }
 
     nav ul li {
-        margin: 5px 0; /* Add vertical space between the list items */
-        width: calc(100% - 20px); /* Ensure the list items take full width within padding */
+        margin: 2px 0; /* Reduce vertical space between the list items */
+        width: 100%; /* Ensure the list items take full width */
     }
 
     nav ul li a {
         width: 100%;
         text-align: center;
-        padding: 15px 0; /* Adjust padding for better spacing */
+        padding: 10px 0; /* Adjust padding for better spacing */
     }
 
     nav input[type="text"] {
@@ -217,7 +217,7 @@ ul ul {
 }
 
 .collapsible .content nav ul li {
-    margin: 5px 0; /* Add less vertical space between the list items */
+    margin: 5px 0; /* Reduce margin for better spacing */
     width: 100%;
 }
 
@@ -230,7 +230,7 @@ ul ul {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
     display: block;
-    width: calc(100% - 20px); /* Ensure the links fit within the gray area */
+    width: 100%;
     text-align: center;
 }
 
