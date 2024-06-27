@@ -1,306 +1,201 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FTS Field Aid Checklist for improving field service management and customer satisfaction.">
+    <meta name="keywords" content="FTS, Field Aid, Checklist, Field Service, Customer Service">
+    <title>FTS Field Aid Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+</head>
+<body>
+    <header>
+        <img src="VGO Logo.jpg" class="logo" alt="VGO Logo" width="200" height="200">
+        <h1>FTS Field Aid</h1>
+    </header>
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="#market-visit-checklist">Market Visit Checklist</a></li>
+            <li><a href="#on-location-checklist">On Location Checklist</a></li>
+            <li><a href="#fts-tools">FTS Tools</a></li>
+        </ul>
+        <input type="text" id="search" placeholder="Search...">
+    </nav>
+    <main>
+        <section id="market-visit-checklist" class="collapsible">
+            <h2>Market Visit Checklist</h2>
+            <div class="content">
+                <section id="pre-visit" class="collapsible">
+                    <h2>Part 1: Pre-Visit <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <h3>Salesforce Account Review</h3>
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Check the account hierarchy, call history, and contacts.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Look under the parent account in the related tab for specific customer goals.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Understand the business objectives that the customer aims to achieve.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Identify active promotions for the customer in Salesforce under the related tab in enrollment locations.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #007bff;
-    color: white;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    z-index: 1000;
-    position: relative;
-}
+                <section id="dm-meeting" class="collapsible">
+                    <h2>Part 2: District Manager (DM) Meeting <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <h3>Create Pre-Cap for DM</h3>
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Craft personalized pre-visit communications addressed to the DM emphasizing training goals and requesting a meeting.</span>
+                            </li>
+                        </ul>
+                        <h3>Plan for the DM Meeting</h3>
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Schedule a meeting with the DM to discuss strategies and address potential objections.</span>
+                            </li>
+                            <li>
+                                Possible topics to cover during the meeting:
+                                <ul>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Introduction and welcome.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Overview of the visit purpose and goals.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Training session plans.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Current market snapshot using data analytics.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Proposed strategies for improvement.</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-.logo {
-    display: block;
-    margin: 0 auto;
-}
+                <section id="objection-handling" class="collapsible">
+                    <h2>Part 3: Objection Handling <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Anticipate potential objections and prepare persuasive responses.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-nav {
-    background-color: #343a40;
-    padding: 10px;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    box-sizing: border-box;
-    margin: 0;
-}
+                <section id="location-visit" class="collapsible">
+                    <h2>Part 4: Location Visit <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Provide targeted training based on VIA/SAC SF findings and DM meeting insights.</span>
+                            </li>
+                            <li>Topics to cover:</li>
+                            <ul>
+                                <li class="checklist-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-text">Sales strategies and best practices.</span>
+                                </li>
+                                <li class="checklist-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-text">Product knowledge and promotion execution techniques.</span>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </section>
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+                <section id="post-visit" class="collapsible">
+                    <h2>Part 5: Post-Visit <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Update Salesforce with information gathered during the visit.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Send recap email summarizing key points and offering ongoing support.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Hold a post-visit debriefing with the account manager to discuss training effectiveness and areas for improvement.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Discuss and order any POS or equipment needed.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
 
-nav ul li {
-    margin: 5px;
-}
+        <section id="on-location-checklist" class="collapsible">
+            <h2>On Location Checklist</h2>
+            <div class="content">
+                <!-- Add your content for On Location Checklist here -->
+                <p>Content for On Location Checklist goes here.</p>
+            </div>
+        </section>
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
-    background-color: #007bff;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 50px;
-    text-align: center;
-}
-
-nav ul li a:hover {
-    background-color: #0056b3;
-    color: yellow;
-    border: 2px solid white;
-}
-
-nav input[type="text"] {
-    padding: 5px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-    display: block;
-    width: calc(100% - 40px);
-    margin: 10px auto;
-}
-
-main {
-    padding: 20px;
-    flex: 1;
-}
-
-.collapsible {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: white;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-}
-
-.collapsible h2 {
-    cursor: pointer;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f5f5f5;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.collapsible .content {
-    display: none;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* General styles for nested lists to ensure proper indentation */
-ul ul {
-    padding-left: 20px; /* Adjust this value to control the level of indentation */
-    list-style-type: disc; /* Change bullet style if necessary */
-}
-
-.checklist-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    flex-wrap: nowrap;
-}
-
-.checklist-item input[type="checkbox"] {
-    margin-right: 10px;
-    margin-top: 4px;
-}
-
-.checklist-item .item-text {
-    flex: 1;
-    word-break: break-word;
-}
-
-#phone-number a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-@media (max-width: 600px) {
-    .checklist-item {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .checklist-item input[type="checkbox"] {
-        margin-right: 10px;
-        margin-top: 4px;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #343a40; /* Ensure the background color covers the full width */
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-        width: 100%; /* Ensure the list items take full width */
-        text-align: center; /* Center the text */
-    }
-
-    nav input[type="text"] {
-        width: 90%;
-    }
-
-    nav ul li a {
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        height: 50px;
-    }
-
-    .collapsible .content nav ul li {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    .collapsible .content nav ul li a {
-        width: 100%;
-        height: 50px;
-    }
-}
-
-footer {
-    background-color: #343a40;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-footer .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-footer .social-links a {
-    margin: 5px 10px;
-    white-space: nowrap;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s, background-color 0.3s, padding 0.3s;
-}
-
-footer .social-links a:hover {
-    color: #007bff;
-    text-decoration: underline;
-    background-color: #f1f1f1;
-    padding: 5px;
-    border-radius: 3px;
-}
-
-@media (max-width: 600px) {
-    footer .social-links a {
-        margin: 5px 0;
-    }
-}
-
-.contact-section {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.contact-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.contact-section form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-section label {
-    margin-bottom: 5px;
-}
-
-.contact-section input,
-.contact-section textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.contact-section button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.contact-section button:hover {
-    background-color: #0056b3;
-}
-
-.contact-section a:hover {
-    color: #007bff;
-    text-decoration: underline;
-    background-color: #f1f1f1;
-    padding: 5px;
-    border-radius: 3px;
-}
+        <section id="fts-tools" class="collapsible">
+            <h2>FTS Tools</h2>
+            <div class="content">
+                <nav>
+                    <ul>
+                        <li><a href="https://valvoline.my.salesforce.com/" target="_blank">Salesforce</a></li>
+                        <li><a href="https://valvoline.us10.sapanalytics.cloud/sap/fpa/ui/app.html#/home" target="_blank">FTS Scorecard</a></li>
+                        <li><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg" target="_blank">Supporting Documents</a></li>
+                        <li><a href="https://valvolineglobal.sharepoint.com/sites/trustedadvisor" target="_blank">Trusted Advisor Toolbox</a></li>
+                        <li><a href="https://valvoline.widencollective.com/portals/dhuiipjz/EquipmentTrainingLibrary" target="_blank">Equipment Library</a></li>
+                        <li><a href="https://dash.valvolineglobal.com/portal/index.html#/productFinderLite/productFinder" target="_blank">Product Finder</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Valvoline Global Products. All rights reserved.</p>
+        <p id="phone-number"><a href="tel:1-800-832-6825">1-800-TeamVal</a></p>
+    </footer>
+</body>
+</html>
