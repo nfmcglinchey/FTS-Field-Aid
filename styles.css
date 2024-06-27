@@ -13,11 +13,11 @@ header {
     padding: 20px;
     background-color: #007bff;
     color: white;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    z-index: 1000;
-    position: relative;
+    width: 100%; /* Ensure it covers the full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 0; /* Remove default margins */
+    z-index: 1000; /* Ensure header stays on top */
+    position: relative; /* Required for z-index to work */
 }
 
 .logo {
@@ -25,46 +25,15 @@ header {
     margin: 0 auto;
 }
 
-.search-container {
-    width: 100%;
-    text-align: left;
-    margin-top: 10px;
-}
-
-.search-container input[type="text"] {
-    padding: 5px;
-    border: none;
-    border-radius: 4px;
-    width: 200px;
-    margin-left: 20px;
-}
-
 nav {
     background-color: #343a40;
     padding: 10px;
     position: sticky;
     top: 0;
-    width: 100%;
-    z-index: 999;
-    box-sizing: border-box;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hamburger {
-    display: none;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
+    width: 100%; /* Ensure it covers the full width */
+    z-index: 999; /* Ensure nav stays just below the header */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 0; /* Remove default margins */
 }
 
 nav ul {
@@ -72,7 +41,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    flex-grow: 1;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -87,18 +56,33 @@ nav ul li a {
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 50px;
-    text-align: center;
+    display: flex; /* Use flex to align items within */
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    width: 180px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    text-align: center; /* Center the text */
 }
 
 nav ul li a:hover {
     background-color: #0056b3;
-    color: yellow;
-    border: 2px solid white;
+    color: yellow; /* Change text color */
+    border: 2px solid white; /* Add border */
+}
+
+nav input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: block;
+    width: calc(100% - 40px);
+    margin: 10px auto;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
 }
 
 .collapsible {
@@ -107,7 +91,7 @@ nav ul li a:hover {
     margin-bottom: 10px;
     padding: 10px;
     background-color: white;
-    max-width: 800px;
+    max-width: 800px; /* Adjust the width as necessary */
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -119,43 +103,43 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f5f5f5;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
+    background-color: #f5f5f5; /* Add background color for the header */
+    padding: 10px; /* Add padding to match the content padding */
+    width: 100%; /* Set the width to 100% to fit the container */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .collapsible .content {
     display: none;
-    padding: 10px;
-    box-sizing: border-box;
+    padding: 10px; /* Ensure consistent padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .collapsible .content nav {
-    background-color: #343a40;
+    background-color: #343a40; /* Dark gray background */
     padding: 10px;
     border-radius: 5px;
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    box-sizing: border-box;
-    z-index: 1;
-    position: relative;
+    width: 100%; /* Ensure it covers the full width */
+    margin: 0; /* Remove default margins */
+    text-align: center; /* Center the content */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    z-index: 1; /* Ensure it stays below the nav */
+    position: relative; /* Ensure it scrolls behind the header */
 }
 
 .collapsible .content nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-around; /* Ensure even spacing between items */
+    flex-wrap: wrap; /* Allow items to wrap */
     margin: 0;
 }
 
 .collapsible .content nav ul li {
-    margin: 5px 0;
-    flex: 1 1 200px;
-    max-width: 200px;
+    margin: 10px; /* Ensure consistent spacing between items */
+    flex: 1 1 200px; /* Adjust the flex property to ensure even spacing */
+    max-width: 200px; /* Ensure each item has a maximum width */
 }
 
 .collapsible .content nav ul li a {
@@ -166,18 +150,18 @@ nav ul li a:hover {
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 50px;
-    text-align: center;
+    display: flex; /* Use flex to align items within */
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+    width: 180px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    text-align: center; /* Center the text */
 }
 
 .collapsible .content nav ul li a:hover {
     background-color: #0056b3;
-    color: yellow;
-    border: 2px solid white;
+    color: yellow; /* Change text color */
+    border: 2px solid white; /* Add border */
 }
 
 .collapsible .content ul ul {
@@ -190,6 +174,66 @@ nav ul li a:hover {
 
 .collapsible .content ul li input {
     margin-right: 10px;
+}
+
+/* Hamburger menu style */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav input[type="text"] {
+        width: 90%;
+    }
+
+    nav ul li a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+        height: 50px; /* Set a consistent height for mobile */
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .collapsible .content nav ul li {
+        flex: 1 1 100%; /* Ensure each item takes full width on mobile */
+        max-width: 100%; /* Ensure each item has a maximum width */
+    }
+
+    .collapsible .content nav ul li a {
+        width: 100%; /* Ensure full width for mobile */
+        height: 50px; /* Ensure consistent height for mobile */
+    }
 }
 
 footer {
@@ -220,54 +264,16 @@ footer .social-links a {
 
 footer .social-links a:hover {
     color: #007bff;
-    text-decoration: underline;
-    background-color: #f1f1f1;
-    padding: 5px;
-    border-radius: 3px;
+    text-decoration: underline; /* Add underline */
+    background-color: #f1f1f1; /* Change background color */
+    padding: 5px; /* Add padding for better visibility */
+    border-radius: 3px; /* Optional: add border-radius for rounded corners */
 }
 
+/* Media query for smaller screens */
 @media (max-width: 600px) {
-    .search-container input[type="text"] {
-        width: 90%;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-        width: auto;
-    }
-
-    nav ul li a {
-        width: 90%;
-        padding: 10px;
-    }
-
-    .fts-tools-nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .fts-tools-nav ul li {
-        margin: 10px 0;
-        width: auto;
-    }
-
-    .fts-tools-nav ul li a {
-        width: 90%;
-        padding: 10px;
+    footer .social-links a {
+        margin: 5px 0;
     }
 }
 
@@ -302,7 +308,7 @@ footer .social-links a:hover {
     border-radius: 5px;
 }
 
-contact-section button {
+.contact-section button {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -312,11 +318,12 @@ contact-section button {
     transition: background-color 0.3s;
 }
 
-contact-section button:hover {
+.contact-section button:hover {
     background-color: #0056b3;
 }
 
-contact-section a:hover {
+/* Add hover effect for other links in the contact section */
+.contact-section a:hover {
     color: #007bff;
     text-decoration: underline;
     background-color: #f1f1f1;
