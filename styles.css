@@ -129,14 +129,14 @@ nav ul li a:hover {
         height: 50px;
     }
 
-    .collapsible .content nav ul li {
-        flex: 1 1 100%;
-        max-width: 100%;
+    .fts-tools-nav ul {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .collapsible .content nav ul li a {
+    .fts-tools-nav ul li {
         width: 100%;
-        height: 50px;
+        margin: 10px 0;
     }
 }
 
