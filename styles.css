@@ -183,7 +183,7 @@ ul ul {
     }
 
     nav ul li {
-        margin: 0; /* Remove margins for a cleaner look */
+        margin: 5px 0; /* Add vertical space between the list items */
         width: 100%; /* Ensure the list items take full width */
     }
 
