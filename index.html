@@ -20,16 +20,19 @@
     <header>
         <img src="VGO Logo.jpg" class="logo" alt="VGO Logo" width="200" height="200">
         <h1>FTS Field Aid</h1>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search...">
-        </div>
     </header>
     <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <ul id="nav-menu">
             <li><a href="#market-visit-checklist">Market Visit Checklist</a></li>
             <li><a href="#on-location-checklist">On Location Checklist</a></li>
             <li><a href="#fts-tools">FTS Tools</a></li>
         </ul>
+        <input type="text" id="search" placeholder="Search...">
     </nav>
     <main>
         <section id="market-visit-checklist" class="collapsible">
