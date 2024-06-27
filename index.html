@@ -1,143 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FTS Field Aid Checklist for improving field service management and customer satisfaction.">
-    <meta name="keywords" content="FTS, Field Aid, Checklist, Field Service, Customer Service">
-    <title>FTS Field Aid Checklist</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-XXXXX-Y');
-    </script>
-</head>
-<body>
-    <header>
-        <img src="VGO Logo.jpg" class="logo" alt="VGO Logo" width="200" height="200">
-        <h1>FTS Field Aid</h1>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search...">
-        </div>
-    </header>
-    <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="#market-visit-checklist">Market Visit Checklist</a></li>
-            <li><a href="#on-location-checklist">On Location Checklist</a></li>
-            <li><a href="#fts-tools">FTS Tools</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="market-visit-checklist" class="collapsible">
-            <h2>Market Visit Checklist</h2>
-            <div class="content">
-                <section id="pre-visit" class="collapsible">
-                    <h2>Part 1: Pre-Visit <input type="checkbox" class="section-checkbox"></h2>
-                    <div class="content">
-                        <h3>Salesforce Account Review</h3>
-                        <ul>
-                            <li><input type="checkbox" class="item-checkbox"> Check the account hierarchy, call history, and contacts.</li>
-                            <li><input type="checkbox" class="item-checkbox"> Look under the parent account in the related tab for specific customer goals.</li>
-                            <li><input type="checkbox" class="item-checkbox"> Understand the business objectives that the customer aims to achieve.</li>
-                            <li><input type="checkbox" class="item-checkbox"> Identify active promotions for the customer in Salesforce under the related tab in enrollment locations.</li>
-                        </ul>
-                    </div>
-                </section>
+: flex;
+flex-direction: column;
+}
 
-                <section id="dm-meeting" class="collapsible">
-                    <h2>Part 2: District Manager (DM) Meeting <input type="checkbox" class="section-checkbox"></h2>
-                    <div class="content">
-                        <h3>Create Pre-Cap for DM</h3>
-                        <ul>
-                            <li><input type="checkbox" class="item-checkbox"> Craft personalized pre-visit communications addressed to the DM emphasizing training goals and requesting a meeting.</li>
-                        </ul>
-                        <h3>Plan for the DM Meeting</h3>
-                        <ul>
-                            <li><input type="checkbox" class="item-checkbox"> Schedule a meeting with the DM to discuss strategies and address potential objections.</li>
-                            <li>Possible topics to cover during the meeting:</li>
-                            <ul>
-                                <li><input type="checkbox" class="item-checkbox"> Introduction and welcome.</li>
-                                <li><input type="checkbox" class="item-checkbox"> Overview of the visit purpose and goals.</li>
-                                <li><input type="checkbox" class="item-checkbox"> Training session plans.</li>
-                                <li><input type="checkbox" class="item-checkbox"> Current market snapshot using data analytics.</li>
-                                <li><input type="checkbox" class="item-checkbox"> Proposed strategies for improvement.</li>
-                            </ul>
-                        </ul>
-                    </div>
-                </section>
+.contact-section label {
+margin-bottom: 5px;
+}
 
-                <section id="objection-handling" class="collapsible">
-                    <h2>Part 3: Objection Handling <input type="checkbox" class="section-checkbox"></h2>
-                    <div class="content">
-                        <ul>
-                            <li><input type="checkbox" class="item-checkbox"> Anticipate potential objections and prepare persuasive responses.</li>
-                        </ul>
-                    </div>
-                </section>
+.contact-section input,
+.contact-section textarea {
+margin-bottom: 10px;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
 
-                <section id="location-visit" class="collapsible">
-                    <h2>Part 4: Location Visit <input type="checkbox" class="section-checkbox"></h2>
-                    <div class="content">
-                        <ul>
-                            <li><input type="checkbox" class="item-checkbox"> Provide targeted training based on VIA/SAC SF findings and DM meeting insights.</li>
-                            <li>Topics to cover:</li>
-                            <ul>
-                                <li><input type="checkbox" class="item-checkbox"> Sales strategies and best practices.</li>
-                                <li><input type="checkbox" class="item-checkbox"> Product knowledge and promotion execution techniques.</li>
-                            </ul>
-                        </ul>
-                    </div>
-                </section>
+.contact-section button {
+padding: 10px 20px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
 
-                <section id="post-visit" class="collapsible">
-                    <h2>Part 5: Post-Visit <input type="checkbox" class="section-checkbox"></h2>
-                    <div class="content">
-                        <ul>
-                            <li><input type="checkbox" class="item-checkbox"> Update Salesforce with information gathered during the visit.</li>
-                            <li><input type="checkbox" class="item-checkbox"> Send recap email summarizing key points and offering ongoing support.</li>
-                            <li><input type="checkbox" class="item-checkbox"> Hold a post-visit debriefing with the account manager to discuss training effectiveness and areas for improvement.</li>
-                            <li><input type="checkbox" class="item-checkbox"> Discuss and order any POS or equipment needed.</li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-        </section>
+.contact-section button
+{
+background-color: #0056b3;
+}
 
-        <section id="on-location-checklist" class="collapsible">
-            <h2>On Location Checklist</h2>
-            <div class="content">
-                <!-- Add your content for On Location Checklist here -->
-                <p>Content for On Location Checklist goes here.</p>
-            </div>
-        </section>
-
-        <section id="fts-tools" class="collapsible">
-            <h2>FTS Tools</h2>
-            <div class="content fts-tools-nav">
-                <nav>
-                    <ul>
-                        <li><a href="https://valvoline.my.salesforce.com/" target="_blank">Salesforce</a></li>
-                        <li><a href="https://valvoline.us10.sapanalytics.cloud/sap/fpa/ui/app.html#/home" target="_blank">FTS Scorecard</a></li>
-                        <li><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg" target="_blank">Supporting Documents</a></li>
-                        <li><a href="https://valvolineglobal.sharepoint.com/sites/trustedadvisor" target="_blank">Trusted Advisor Toolbox</a></li>
-                        <li><a href="https://valvoline.widencollective.com/portals/dhuiipjz/EquipmentTrainingLibrary" target="_blank">Equipment Library</a></li>
-                        <li><a href="https://dash.valvolineglobal.com/portal/index.html#/productFinderLite/productFinder" target="_blank">Product Finder</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Valvoline Global Products. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+.contact-section a
+{
+color: #007bff;
+text-decoration: underline;
+background-color: #f1f1f1;
+padding: 5px;
+border-radius: 3px;
+}
