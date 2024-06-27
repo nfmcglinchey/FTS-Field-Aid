@@ -138,6 +138,24 @@ ul ul {
     word-break: break-word;
 }
 
+#phone-number a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 600px) {
     .checklist-item {
         flex-direction: row;
@@ -149,9 +167,43 @@ ul ul {
         margin-top: 4px;
     }
 
-    #phone-number a {
-        text-decoration: none;
-        color: inherit;
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav input[type="text"] {
+        width: 90%;
+    }
+
+    nav ul li a {
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+    }
+
+    .collapsible .content nav ul li {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .collapsible .content nav ul li a {
+        width: 100%;
+        height: 50px;
     }
 }
 
