@@ -20,22 +20,20 @@
     <header>
         <img src="VGO Logo.jpg" class="logo" alt="VGO Logo" width="200" height="200">
         <h1>FTS Field Aid</h1>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search...">
+        </div>
     </header>
     <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
         <ul id="nav-menu">
-            <li><a href="#fts-checklist">FTS Checklist</a></li>
+            <li><a href="#market-visit-checklist">Market Visit Checklist</a></li>
+            <li><a href="#on-location-checklist">On Location Checklist</a></li>
             <li><a href="#fts-tools">FTS Tools</a></li>
         </ul>
-        <input type="text" id="search" placeholder="Search...">
     </nav>
     <main>
-        <section id="fts-checklist" class="collapsible">
-            <h2>FTS Checklist</h2>
+        <section id="market-visit-checklist" class="collapsible">
+            <h2>Market Visit Checklist</h2>
             <div class="content">
                 <section id="pre-visit" class="collapsible">
                     <h2>Part 1: Pre-Visit <input type="checkbox" class="section-checkbox"></h2>
@@ -106,6 +104,14 @@
                         </ul>
                     </div>
                 </section>
+            </div>
+        </section>
+
+        <section id="on-location-checklist" class="collapsible">
+            <h2>On Location Checklist</h2>
+            <div class="content">
+                <!-- Add your content for On Location Checklist here -->
+                <p>Content for On Location Checklist goes here.</p>
             </div>
         </section>
 
