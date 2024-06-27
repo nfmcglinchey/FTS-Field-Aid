@@ -76,21 +76,21 @@ nav ul {
 }
 
 nav ul li {
-    margin: 5px;
+    margin: 5px 0;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
+    width: 90%;
     height: 50px;
     text-align: center;
 }
@@ -162,7 +162,7 @@ nav ul li a:hover {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
@@ -275,14 +275,14 @@ footer .social-links a:hover {
     margin-bottom: 20px;
 }
 
-.contact-section form {
+contact-section form {
     max-width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-.contact-section label {
+contact-section label {
     margin-bottom: 5px;
 }
 
