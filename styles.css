@@ -101,50 +101,6 @@ nav ul li a:hover {
     border: 2px solid white;
 }
 
-@media (max-width: 600px) {
-    .search-container input[type="text"] {
-        width: 90%;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    nav ul li a {
-        width: auto;
-        padding: 10px;
-    }
-
-    .fts-tools-nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .fts-tools-nav ul li {
-        width: auto;
-        margin: 1px 0;
-    }
-}
-
-main {
-    padding: 20px;
-    flex: 1;
-}
-
 .collapsible {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -271,12 +227,39 @@ footer .social-links a:hover {
 }
 
 @media (max-width: 600px) {
-    footer .social-links a {
-        margin: 5px 0;
+    .search-container input[type="text"] {
+        width: 90%;
     }
 
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li,
     .fts-tools-nav ul li {
         margin: 10px 0;
+        width: auto;
+    }
+
+    nav ul li a,
+    .fts-tools-nav ul li a {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .fts-tools-nav ul {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -292,7 +275,7 @@ footer .social-links a:hover {
     margin-bottom: 20px;
 }
 
-contact-section form {
+.contact-section form {
     max-width: 600px;
     margin: 0 auto;
     display: flex;
@@ -311,7 +294,7 @@ contact-section form {
     border-radius: 5px;
 }
 
-.contact-section button {
+contact-section button {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
