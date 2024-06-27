@@ -247,13 +247,13 @@ footer .social-links a:hover {
 
     nav ul li,
     .fts-tools-nav ul li {
-        margin: 10px 0;
+        margin: 5px 0;  /* Consistent spacing for both */
         width: auto;
     }
 
     nav ul li a,
     .fts-tools-nav ul li a {
-        width: 100%;
+        width: 90%; /* Adjusted width for both */
         padding: 10px;
     }
 
@@ -286,7 +286,7 @@ footer .social-links a:hover {
     margin-bottom: 5px;
 }
 
-.contact-section input,
+contact-section input,
 .contact-section textarea {
     margin-bottom: 10px;
     padding: 10px;
@@ -304,11 +304,11 @@ contact-section button {
     transition: background-color 0.3s;
 }
 
-.contact-section button:hover {
+contact-section button:hover {
     background-color: #0056b3;
 }
 
-.contact-section a:hover {
+contact-section a:hover {
     color: #007bff;
     text-decoration: underline;
     background-color: #f1f1f1;
