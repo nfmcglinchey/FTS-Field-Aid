@@ -140,12 +140,6 @@ nav input[type="text"] {
     nav input[type="text"] {
         width: 90%;
     }
-
-    .fts-nav-tab {
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-    }
 }
 
 .hamburger {
