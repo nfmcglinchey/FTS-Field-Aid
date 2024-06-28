@@ -88,20 +88,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Dynamic width adjustment for navigation tabs
+    // Dynamic width and height adjustment for navigation tabs
     const navTabs = document.querySelectorAll('.nav-tab, .fts-nav-tab');
 
     let maxWidth = 0;
+    let maxHeight = 0;
 
     navTabs.forEach(tab => {
         const tabWidth = tab.offsetWidth;
+        const tabHeight = tab.offsetHeight;
         if (tabWidth > maxWidth) {
             maxWidth = tabWidth;
+        }
+        if (tabHeight > maxHeight) {
+            maxHeight = tabHeight;
         }
     });
 
     navTabs.forEach(tab => {
         tab.style.width = `${maxWidth}px`;
+        tab.style.height = `${maxHeight}px`;
     });
 });
 
