@@ -97,6 +97,19 @@ nav input[type="text"] {
 
     .hamburger {
         display: block;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 25px;
+        width: 30px;
+        margin: 10px;
+    }
+
+    .hamburger div {
+        background-color: white;
+        height: 3px;
+        width: 100%;
+        transition: all 0.3s ease;
     }
 
     nav ul {
