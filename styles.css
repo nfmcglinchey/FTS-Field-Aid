@@ -53,16 +53,16 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px; /* Adjust padding as needed */
+    padding: 10px; /* Adjust padding as needed */
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: inline-block; /* Ensure links do not take the full width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    height: 50px; /* Set a fixed height for uniformity */
-    line-height: 30px; /* Adjust line height to center text vertically */
+    height: auto; /* Allow height to adjust based on content */
     box-sizing: border-box;
-    white-space: nowrap; /* Prevent text wrapping */
     overflow: hidden; /* Ensure text does not overflow */
 }
 
@@ -230,11 +230,13 @@ ul ul {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px; /* Adjust padding as needed */
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 90%; /* Ensure the buttons don't overflow */
     text-align: center;
     margin: 0 auto; /* Center the buttons */
