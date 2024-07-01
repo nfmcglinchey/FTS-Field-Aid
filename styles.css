@@ -46,20 +46,26 @@ nav ul {
 
 nav ul li {
     margin: 5px;
-    width: 100%;
+    width: auto;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 0;
+    padding: 10px 20px;
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: block;
+    display: inline-block;
     text-align: center;
-    max-width: 100%;
+    height: 50px;
+    line-height: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav ul li a:hover {
@@ -76,6 +82,61 @@ nav input[type="text"] {
     display: block;
     width: calc(100% - 40px);
     margin: 10px auto;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav input[type="text"] {
+        width: 90%;
+    }
+
+    .collapsible h2 {
+        font-size: 18px;
+    }
+
+    .collapsible .content {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+
+    footer .social-links a {
+        margin: 5px 0;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 main {
@@ -113,10 +174,9 @@ main {
     box-sizing: border-box;
 }
 
-/* General styles for nested lists to ensure proper indentation */
 ul ul {
-    padding-left: 20px; /* Adjust this value to control the level of indentation */
-    list-style-type: disc; /* Change bullet style if necessary */
+    padding-left: 20px;
+    list-style-type: disc;
 }
 
 .checklist-item {
@@ -154,51 +214,6 @@ ul ul {
     transition: all 0.3s ease;
 }
 
-@media (max-width: 600px) {
-    .checklist-item {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .checklist-item input[type="checkbox"] {
-        margin-right: 10px;
-        margin-top: 4px;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #343a40; /* Ensure the background color covers the full width */
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 5px 0; /* Reduce vertical space between the list items */
-        width: 100%; /* Ensure the list items take full width */
-    }
-
-    nav ul li a {
-        width: 90%; /* Ensure the buttons don't overflow */
-        text-align: center;
-        padding: 10px 0; /* Adjust padding for better spacing */
-        margin: 0 auto; /* Center the buttons */
-    }
-
-    nav input[type="text"] {
-        width: 90%;
-    }
-}
-
 .collapsible .content nav {
     background-color: #343a40;
     padding: 10px;
@@ -218,7 +233,7 @@ ul ul {
 }
 
 .collapsible .content nav ul li {
-    margin: 5px 0; /* Reduce margin for better spacing */
+    margin: 5px 0;
     width: 100%;
 }
 
@@ -230,10 +245,12 @@ ul ul {
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-    display: block;
-    width: 90%; /* Ensure the buttons don't overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
     text-align: center;
-    margin: 0 auto; /* Center the buttons */
+    margin: 0 auto;
 }
 
 .collapsible .content nav ul li a:hover {
@@ -277,6 +294,49 @@ footer .social-links a:hover {
 }
 
 @media (max-width: 600px) {
+    .checklist-item {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        margin-right: 10px;
+        margin-top: 4px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #343a40;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    nav ul li a {
+        width: 90%;
+        text-align: center;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+
+    nav input[type="text"] {
+        width: 90%;
+    }
+
     footer .social-links a {
         margin: 5px 0;
     }
