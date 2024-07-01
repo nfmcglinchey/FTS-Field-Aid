@@ -88,11 +88,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Hamburger menu functionality
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
+    // Dynamic width adjustment for navigation tabs
+    const navTabs = document.querySelectorAll('.nav-tab, .fts-nav-tab');
+
+    let maxWidth = 0;
+
+    navTabs.forEach(tab => {
+        const tabWidth = tab.offsetWidth;
+        if (tabWidth > maxWidth) {
+            maxWidth = tabWidth;
+        }
+    });
+
+    navTabs.forEach(tab => {
+        tab.style.width = `${maxWidth}px`;
     });
 });
 
