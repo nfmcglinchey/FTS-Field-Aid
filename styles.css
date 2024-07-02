@@ -66,6 +66,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: auto; /* Ensure width is flexible */
 }
 
 .primary-nav ul li a:hover {
