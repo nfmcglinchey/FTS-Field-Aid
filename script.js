@@ -87,22 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
             sectionCheckbox.checked = allChecked;
         });
     });
-
-    // Dynamic width adjustment for navigation tabs
-    const navTabs = document.querySelectorAll('.nav-tab, .fts-nav-tab');
-
-    let maxWidth = 0;
-
-    navTabs.forEach(tab => {
-        const tabWidth = tab.offsetWidth;
-        if (tabWidth > maxWidth) {
-            maxWidth = tabWidth;
-        }
-    });
-
-    navTabs.forEach(tab => {
-        tab.style.width = `${maxWidth}px`;
-    });
 });
 
 function toggleMenu() {
