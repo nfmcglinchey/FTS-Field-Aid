@@ -16,7 +16,7 @@ header {
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    z-index: 1000;
+    z-index: 1000; /* Ensure header is on top */
     position: relative;
 }
 
@@ -25,18 +25,18 @@ header {
     margin: 0 auto;
 }
 
-nav {
+.primary-nav {
     background-color: #343a40;
     padding: 10px;
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 999; /* Ensure nav is below header but above other content */
     box-sizing: border-box;
     margin: 0;
 }
 
-nav ul {
+.primary-nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -44,12 +44,12 @@ nav ul {
     flex-wrap: wrap;
 }
 
-nav ul li {
+.primary-nav ul li {
     margin: 5px;
     width: auto;
 }
 
-nav ul li a {
+.primary-nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -68,13 +68,13 @@ nav ul li a {
     justify-content: center;
 }
 
-nav ul li a:hover {
+.primary-nav ul li a:hover {
     background-color: #0056b3;
     color: yellow;
     border: 2px solid white;
 }
 
-nav input[type="text"] {
+.primary-nav input[type="text"] {
     padding: 5px;
     border: none;
     border-radius: 4px;
@@ -89,7 +89,7 @@ nav input[type="text"] {
         display: block;
     }
 
-    nav ul {
+    .primary-nav ul {
         display: none;
         flex-direction: column;
         width: 100%;
@@ -98,22 +98,22 @@ nav input[type="text"] {
         box-sizing: border-box;
     }
 
-    nav ul.show {
+    .primary-nav ul.show {
         display: flex;
     }
 
-    nav ul li {
+    .primary-nav ul li {
         margin: 5px 0;
         width: 100%;
     }
 
-    nav ul li a {
+    .primary-nav ul li a {
         padding: 10px;
         width: 100%;
         text-align: center;
     }
 
-    nav input[type="text"] {
+    .primary-nav input[type="text"] {
         width: 90%;
     }
 
@@ -222,6 +222,8 @@ ul ul {
     margin: 0;
     text-align: center;
     box-sizing: border-box;
+    z-index: 1; /* Ensure it is below primary nav */
+    position: relative;
 }
 
 .collapsible .content nav ul {
@@ -308,7 +310,7 @@ footer .social-links a:hover {
         display: block;
     }
 
-    nav ul {
+    .primary-nav ul {
         display: none;
         flex-direction: column;
         width: 100%;
@@ -317,23 +319,23 @@ footer .social-links a:hover {
         box-sizing: border-box;
     }
 
-    nav ul.show {
+    .primary-nav ul.show {
         display: flex;
     }
 
-    nav ul li {
+    .primary-nav ul li {
         margin: 5px 0;
         width: 100%;
     }
 
-    nav ul li a {
+    .primary-nav ul li a {
         width: 90%;
         text-align: center;
         padding: 10px 0;
         margin: 0 auto;
     }
 
-    nav input[type="text"] {
+    .primary-nav input[type="text"] {
         width: 90%;
     }
 
