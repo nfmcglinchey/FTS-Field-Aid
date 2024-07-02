@@ -103,16 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
     navTabs.forEach(tab => {
         tab.style.width = `${maxWidth}px`;
     });
-
-    // Add console logs for debugging
-    console.log("Document loaded and scripts initialized.");
-
-    // Ensure the menu toggle works
-    const hamburger = document.querySelector('.hamburger');
-    hamburger.addEventListener('click', function () {
-        console.log("Hamburger menu clicked");
-        document.getElementById('nav-menu').classList.toggle('show');
-    });
 });
 
 function toggleMenu() {
