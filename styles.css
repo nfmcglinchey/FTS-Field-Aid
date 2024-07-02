@@ -16,7 +16,7 @@ header {
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    z-index: 1000;
+    z-index: 1000; /* Ensure header is on top */
     position: relative;
 }
 
@@ -31,7 +31,7 @@ nav {
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 999; /* Ensure nav is below header but above other content */
     box-sizing: border-box;
     margin: 0;
 }
