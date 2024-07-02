@@ -1,12 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const phoneNumberElement = document.getElementById('phone-number');
-    phoneNumberElement.addEventListener('mouseover', function () {
-        this.textContent = "1-800-832-6825";
-    });
-    phoneNumberElement.addEventListener('mouseout', function () {
-        this.textContent = "1-800-TeamVal";
-    });
-
     const collapsibleHeaders = document.querySelectorAll('.collapsible h2');
     const sectionCheckboxes = document.querySelectorAll('.section-checkbox');
 
