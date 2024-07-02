@@ -6,8 +6,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    height: 100%; /* Ensure the body takes full height */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 header {
