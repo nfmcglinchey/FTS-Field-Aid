@@ -1,110 +1,396 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const phoneNumberElement = document.getElementById('phone-number');
-    phoneNumberElement.addEventListener('mouseover', function () {
-        this.textContent = "1-800-832-6825";
-    });
-    phoneNumberElement.addEventListener('mouseout', function () {
-        this.textContent = "1-800-TeamVal";
-    });
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-    const collapsibleHeaders = document.querySelectorAll('.collapsible h2');
-    const sectionCheckboxes = document.querySelectorAll('.section-checkbox');
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    z-index: 1000;
+    position: relative;
+}
 
-    collapsibleHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
-        });
-    });
+.logo {
+    display: block;
+    margin: 0 auto;
+}
 
-    const searchInput = document.getElementById('search');
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        const sections = document.querySelectorAll('main section');
-        sections.forEach(section => {
-            const text = section.textContent.toLowerCase();
-            section.style.display = text.includes(query) ? 'block' : 'none';
-        });
-    });
+nav {
+    background-color: #343a40;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    box-sizing: border-box;
+    margin: 0;
+}
 
-    // Ensure the collapsible sections start closed
-    document.querySelectorAll('.collapsible .content').forEach(div => div.style.display = 'none');
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-    // Smooth scrolling and expanding for navigation links
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+nav ul li {
+    margin: 5px;
+    width: auto;
+}
 
-            // Expand the target section
-            const content = targetElement.querySelector('.content');
-            if (content && content.style.display !== 'block') {
-                content.style.display = 'block';
-            }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    display: inline-block;
+    text-align: center;
+    height: 50px;
+    line-height: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-            // Smooth scroll to the target section
-            window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-            });
-        });
-    });
+nav ul li a:hover {
+    background-color: #0056b3;
+    color: yellow;
+    border: 2px solid white;
+}
 
-    // Add event listeners for the FTS Tools links to open in a new tab
-    const ftsToolLinks = document.querySelectorAll('#fts-tools nav ul li a');
-    ftsToolLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const targetUrl = this.getAttribute('href');
-            window.open(targetUrl, '_blank');
-        });
-    });
+nav input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: block;
+    width: calc(100% - 40px);
+    margin: 10px auto;
+}
 
-    // Functionality for section checkboxes
-    sectionCheckboxes.forEach(sectionCheckbox => {
-        sectionCheckbox.addEventListener('change', function () {
-            const section = this.closest('section');
-            const itemCheckboxes = section.querySelectorAll('.item-checkbox');
-            itemCheckboxes.forEach(itemCheckbox => {
-                itemCheckbox.checked = this.checked;
-            });
-        });
-    });
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
 
-    // Functionality for item checkboxes
-    const itemCheckboxes = document.querySelectorAll('.item-checkbox');
-    itemCheckboxes.forEach(itemCheckbox => {
-        itemCheckbox.addEventListener('change', function () {
-            const section = this.closest('section');
-            const sectionCheckbox = section.querySelector('.section-checkbox');
-            const allChecked = section.querySelectorAll('.item-checkbox:checked').length === section.querySelectorAll('.item-checkbox').length;
-            sectionCheckbox.checked = allChecked;
-        });
-    });
+    header {
+        padding: 10px;
+    }
 
-    // Dynamic width adjustment for navigation tabs
-    const navTabs = document.querySelectorAll('.nav-tab, .fts-nav-tab');
+    nav ul {
+        display: none;
+    }
 
-    let maxWidth = 0;
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-    navTabs.forEach(tab => {
-        const tabWidth = tab.offsetWidth;
-        if (tabWidth > maxWidth) {
-            maxWidth = tabWidth;
-        }
-    });
+    nav ul li {
+        width: 100%;
+    }
 
-    navTabs.forEach(tab => {
-        tab.style.width = `${maxWidth}px`;
-    });
-});
+    nav ul li a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
 
-function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('show');
+    nav input[type="text"] {
+        width: 90%;
+    }
+
+    .collapsible h2 {
+        font-size: 18px;
+    }
+
+    .collapsible .content {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+
+    footer .social-links a {
+        margin: 5px 0;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+.collapsible {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.collapsible h2 {
+    cursor: pointer;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.collapsible .content {
+    display: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+ul ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: nowrap;
+}
+
+.checklist-item input[type="checkbox"] {
+    margin-right: 10px;
+    margin-top: 4px;
+}
+
+.checklist-item .item-text {
+    flex: 1;
+    word-break: break-word;
+}
+
+#phone-number a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.collapsible .content nav {
+    background-color: #343a40;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.collapsible .content nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.collapsible .content nav ul li {
+    margin: 5px 0;
+    width: 100%;
+}
+
+.collapsible .content nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.collapsible .content nav ul li a:hover {
+    background-color: #0056b3;
+    color: yellow;
+    border: 2px solid white;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer .social-links a {
+    margin: 5px 10px;
+    white-space: nowrap;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s, padding 0.3s;
+}
+
+footer .social-links a:hover {
+    color: #007bff;
+    text-decoration: underline;
+    background-color: #f1f1f1;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+    .checklist-item {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        margin-right: 10px;
+        margin-top: 4px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #343a40;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    nav ul li a {
+        width: 90%;
+        text-align: center;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+
+    nav input[type="text"] {
+        width: 90%;
+    }
+
+    footer .social-links a {
+        margin: 5px 0;
+    }
+}
+
+.contact-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section label {
+    margin-bottom: 5px;
+}
+
+.contact-section input,
+.contact-section textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-section button:hover {
+    background-color: #0056b3;
+}
+
+.contact-section a:hover {
+    color: #007bff;
+    text-decoration: underline;
+    background-color: #f1f1f1;
+    padding: 5px;
+    border-radius: 3px;
 }
