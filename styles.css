@@ -46,14 +46,14 @@ header {
 
 .primary-nav ul li {
     margin: 5px;
-    width: auto;
+    width: auto; /* Ensure width is flexible */
 }
 
 .primary-nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Reduced padding from 10px 20px */
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
@@ -220,7 +220,7 @@ ul ul {
     padding: 10px;
     border-radius: 5px;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     text-align: center;
     box-sizing: border-box;
     z-index: 1; /* Ensure it is below primary nav */
@@ -238,22 +238,23 @@ ul ul {
 .collapsible .content nav ul li {
     margin: 5px 0;
     width: 100%;
+    text-align: center;
 }
 
 .collapsible .content nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Reduced padding */
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    text-align: center;
-    margin: 0 auto;
+    width: 80%; /* Adjust width to make it narrower */
+    max-width: 300px; /* Set a maximum width for the tabs */
+    margin: 0 auto; /* Center the tabs */
 }
 
 .collapsible .content nav ul li a:hover {
