@@ -85,25 +85,25 @@ nav input[type="text"] {
 }
 
 @media (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
-
-    header {
-        padding: 10px;
+    .hamburger {
+        display: block;
     }
 
     nav ul {
         display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #343a40;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     nav ul.show {
         display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     nav ul li {
+        margin: 5px 0;
         width: 100%;
     }
 
