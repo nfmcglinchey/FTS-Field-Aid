@@ -79,6 +79,39 @@ document.addEventListener('DOMContentLoaded', function () {
             sectionCheckbox.checked = allChecked;
         });
     });
+
+    // Function to dynamically load content
+    function loadContent(section) {
+        const contentContainer = document.getElementById('on-location-checklist-content');
+        if (section === 'key-account') {
+            contentContainer.innerHTML = `
+                <h3>Key Account Checklist</h3>
+                <ul>
+                    <li>Key Account Item 1</li>
+                    <li>Key Account Item 2</li>
+                    <!-- Add more items as needed -->
+                </ul>
+            `;
+        } else if (section === 'strategic-account') {
+            contentContainer.innerHTML = `
+                <h3>Strategic Account Checklist</h3>
+                <ul>
+                    <li>Strategic Account Item 1</li>
+                    <li>Strategic Account Item 2</li>
+                    <!-- Add more items as needed -->
+                </ul>
+                <p><a href="https://chatgpt.com/g/g-z3YBXrFGq-strickland-brothers-info-assistant" target="_blank">Strickland Brothers Info Assistant</a></p>
+            `;
+        }
+    }
+
+    // Event listeners for buttons
+    document.getElementById('key-account-button').addEventListener('click', function () {
+        loadContent('key-account');
+    });
+    document.getElementById('strategic-account-button').addEventListener('click', function () {
+        loadContent('strategic-account');
+    });
 });
 
 function toggleMenu() {
