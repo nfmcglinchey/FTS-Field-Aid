@@ -344,6 +344,28 @@ footer .social-links a:hover {
     footer .social-links a {
         margin: 5px 0;
     }
+
+    #on-location-checklist-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #on-location-checklist-buttons button {
+        width: 90%;
+        margin: 5px 0;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #on-location-checklist-content {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 90%;
+        margin: 10px auto;
+    }
 }
 
 .contact-section {
