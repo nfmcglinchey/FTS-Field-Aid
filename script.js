@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><a href="https://chatgpt.com/g/g-z3YBXrFGq-strickland-brothers-info-assistant" target="_blank">Strickland Brothers Info Assistant</a></p>
             `;
         }
+        contentContainer.style.display = 'block';
     }
 
     // Event listeners for buttons
