@@ -8,18 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
     strategicAccountContent.style.display = 'none';
 
     keyAccountButton.addEventListener('click', function () {
-        toggleContent(keyAccountContent);
+        showContent(keyAccountContent, strategicAccountContent);
     });
 
     strategicAccountButton.addEventListener('click', function () {
-        toggleContent(strategicAccountContent);
+        showContent(strategicAccountContent, keyAccountContent);
     });
 
-    function toggleContent(contentElement) {
-        if (contentElement.style.display === 'block') {
-            contentElement.style.display = 'none';
+    function showContent(contentToShow, contentToHide) {
+        contentToHide.style.display = 'none';
+        if (contentToShow.style.display === 'block') {
+            contentToShow.style.display = 'none';
         } else {
-            contentElement.style.display = 'block';
+            contentToShow.style.display = 'block';
         }
     }
 
