@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (event) {
             event.preventDefault();
             const targetUrl = this.getAttribute('href');
-            if (targetUrl.includes('salesforce')) {
+            if (targetUrl === 'javascript:void(0)') {
                 redirectToSalesforce();
             } else {
                 window.open(targetUrl, '_blank');
