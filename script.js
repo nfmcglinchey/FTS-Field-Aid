@@ -109,5 +109,20 @@ function toggleMenu() {
 function redirectToSalesforce() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const salesforceUrl = isMobile ? 'salesforce1://valvoline.my.salesforce.com/' : 'https://valvoline.my.salesforce.com/';
-    window.location.href = salesforceUrl;
+
+    if (isMobile) {
+        const fallbackUrl = 'https://valvoline.my.salesforce.com/';
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = salesforceUrl;
+
+        document.body.appendChild(iframe);
+
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+            window.location.href = fallbackUrl;
+        }, 2500); // Adjust timeout as needed for your use case
+    } else {
+        window.location.href = salesforceUrl;
+    }
 }
