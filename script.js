@@ -119,18 +119,16 @@ function redirectToSalesforce() {
     const salesforceWebUrl = 'https://valvoline.my.salesforce.com/';
 
     if (isMobile) {
-        const start = Date.now();
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = salesforceAppUrl;
 
-        // Attempt to open the Salesforce app
-        window.location.href = salesforceAppUrl;
+        document.body.appendChild(iframe);
 
-        // Fallback to browser if the app is not installed
         setTimeout(() => {
-            const elapsedTime = Date.now() - start;
-            if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
-                window.location.href = salesforceWebUrl;
-            }
-        }, 1500);
+            document.body.removeChild(iframe);
+            window.location.href = salesforceWebUrl;
+        }, 2000);
     } else {
         // Open in browser for non-mobile devices
         window.location.href = salesforceWebUrl;
