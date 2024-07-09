@@ -129,12 +129,14 @@ function redirectToSalesforce() {
     }
 }
 
-function redirectToSharePoint(url) {
+function redirectToSharePoint() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const sharePointUrl = isMobile ? `ms-sharepoint://my.sharepoint.com/${url.replace('https://', '')}` : url;
+    const sharePointUrl = isMobile 
+        ? 'ms-sharepoint://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg' 
+        : 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
 
     if (isMobile) {
-        const fallbackUrl = url;
+        const fallbackUrl = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
         const start = Date.now();
 
         window.location.href = sharePointUrl;
@@ -147,6 +149,6 @@ function redirectToSharePoint(url) {
             }
         }, 1500);
     } else {
-        window.location.href = url;
+        window.location.href = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
     }
 }
