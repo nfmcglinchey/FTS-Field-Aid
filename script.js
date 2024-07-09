@@ -108,6 +108,17 @@ function toggleMenu() {
 
 function redirectToSalesforce() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const salesforceUrl = isMobile ? 'salesforce1://valvoline.my.salesforce.com/' : 'https://valvoline.my.salesforce.com/';
-    window.location.href = salesforceUrl;
+    const appUrl = 'salesforce1://valvoline.my.salesforce.com/';
+    const webUrl = 'https://valvoline.my.salesforce.com/';
+
+    if (isMobile) {
+        window.location.href = appUrl;
+
+        setTimeout(function() {
+            // If the app did not open, navigate to the web URL
+            window.location.href = webUrl;
+        }, 2000); // 2 seconds delay
+    } else {
+        window.location.href = webUrl;
+    }
 }
