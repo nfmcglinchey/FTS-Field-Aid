@@ -112,16 +112,14 @@ function redirectToSalesforce() {
 
     if (isMobile) {
         const fallbackUrl = 'https://valvoline.my.salesforce.com/';
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = salesforceUrl;
-
-        document.body.appendChild(iframe);
+        const start = Date.now();
+        window.location.href = salesforceUrl;
 
         setTimeout(() => {
-            document.body.removeChild(iframe);
-            window.location.href = fallbackUrl;
-        }, 2500); // Adjust timeout as needed for your use case
+            if (Date.now() - start < 2000) { // Adjust timeout as needed
+                window.location.href = fallbackUrl;
+            }
+        }, 1500); // Adjust timeout as needed
     } else {
         window.location.href = salesforceUrl;
     }
