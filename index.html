@@ -8,6 +8,13 @@
     <title>FTS Field Aid Checklist</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script>
+        function redirectToSalesforce() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const salesforceUrl = isMobile ? 'salesforce1://valvoline.my.salesforce.com/' : 'https://valvoline.my.salesforce.com/';
+            window.location.href = salesforceUrl;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -196,7 +203,7 @@
             <div class="content">
                 <nav>
                     <ul>
-                        <li><a href="salesforce1://valvoline.my.salesforce.com/" target="_blank" class="fts-nav-tab">Salesforce</a></li>
+                        <li><a href="javascript:void(0)" onclick="redirectToSalesforce()" class="fts-nav-tab">Salesforce</a></li>
                         <li><a href="https://valvoline.us10.sapanalytics.cloud/sap/fpa/ui/app.html#/home" target="_blank" class="fts-nav-tab">FTS Scorecard</a></li>
                         <li><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg" target="_blank" class="fts-nav-tab">Supporting Documents</a></li>
                         <li><a href="https://valvolineglobal.sharepoint.com/sites/trustedadvisor" target="_blank" class="fts-nav-tab">Trusted Advisor Toolbox</a></li>
