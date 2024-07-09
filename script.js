@@ -73,8 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const targetUrl = this.getAttribute('href');
             if (targetUrl === 'javascript:void(0)') {
-                const redirectFunction = link.getAttribute('onclick');
-                eval(redirectFunction); // Call the specific redirect function
+                redirectToSalesforce();
             } else {
                 window.open(targetUrl, '_blank');
             }
@@ -117,33 +116,14 @@ function redirectToSalesforce() {
 
         window.location.href = salesforceUrl;
 
+        // Check if the app was opened
         setTimeout(() => {
             const elapsedTime = Date.now() - start;
-            if (elapsedTime < 1500) {
+            if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
                 window.location.href = fallbackUrl;
             }
         }, 1500);
     } else {
         window.location.href = salesforceUrl;
-    }
-}
-
-function redirectToSharePoint() {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const sharePointUrl = 'ms-sharepoint://webDeepLink?url=https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
-    const webUrl = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
-
-    if (isMobile) {
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = sharePointUrl;
-        document.body.appendChild(iframe);
-
-        setTimeout(() => {
-            document.body.removeChild(iframe);
-            window.location.href = webUrl;
-        }, 1500);
-    } else {
-        window.location.href = webUrl;
     }
 }
