@@ -131,7 +131,7 @@ function redirectToSalesforce() {
 
 function redirectToSharePoint() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const sharePointUrl = 'ms-sharepoint://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
+    const sharePointUrl = 'ms-sharepoint://webDeepLink?url=https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
     const webUrl = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
 
     if (isMobile) {
