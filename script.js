@@ -100,6 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
             sectionCheckbox.checked = allChecked;
         });
     });
+
+    // Salesforce link redirection logic
+    const salesforceLink = document.getElementById('salesforce-link');
+    salesforceLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        redirectToSalesforce();
+    });
 });
 
 function toggleMenu() {
@@ -108,22 +115,24 @@ function toggleMenu() {
 
 function redirectToSalesforce() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const salesforceUrl = isMobile ? 'salesforce1://valvoline.my.salesforce.com/' : 'https://valvoline.my.salesforce.com/';
+    const salesforceAppUrl = 'salesforce1://valvoline.my.salesforce.com/';
+    const salesforceWebUrl = 'https://valvoline.my.salesforce.com/';
 
     if (isMobile) {
-        const fallbackUrl = 'https://valvoline.my.salesforce.com/';
         const start = Date.now();
 
-        window.location.href = salesforceUrl;
+        // Attempt to open the Salesforce app
+        window.location.href = salesforceAppUrl;
 
-        // Check if the app was opened
+        // Fallback to browser if the app is not installed
         setTimeout(() => {
             const elapsedTime = Date.now() - start;
             if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
-                window.location.href = fallbackUrl;
+                window.location.href = salesforceWebUrl;
             }
         }, 1500);
     } else {
-        window.location.href = salesforceUrl;
+        // Open in browser for non-mobile devices
+        window.location.href = salesforceWebUrl;
     }
 }
