@@ -8,6 +8,13 @@
     <title>FTS Field Aid Checklist</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script>
+        function redirectToSalesforce() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const salesforceUrl = isMobile ? 'salesforce1://valvoline.my.salesforce.com/' : 'https://valvoline.my.salesforce.com/';
+            window.location.href = salesforceUrl;
+        }
+    </script>
 </head>
 <body>
     <header>
