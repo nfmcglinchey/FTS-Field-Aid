@@ -72,11 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (event) {
             event.preventDefault();
             const targetUrl = this.getAttribute('href');
-            if (targetUrl === 'javascript:void(0)') {
-                redirectToSalesforce();
-            } else {
-                window.open(targetUrl, '_blank');
-            }
+            window.open(targetUrl, '_blank');
         });
     });
 
@@ -100,37 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
             sectionCheckbox.checked = allChecked;
         });
     });
-
-    // Salesforce link redirection logic
-    const salesforceLink = document.getElementById('salesforce-link');
-    salesforceLink.addEventListener('click', function (event) {
-        event.preventDefault();
-        redirectToSalesforce();
-    });
 });
 
 function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('show');
-}
-
-function redirectToSalesforce() {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const salesforceAppUrl = 'salesforce1://valvoline.my.salesforce.com/';
-    const salesforceWebUrl = 'https://valvoline.my.salesforce.com/';
-
-    if (isMobile) {
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = salesforceAppUrl;
-
-        document.body.appendChild(iframe);
-
-        setTimeout(() => {
-            document.body.removeChild(iframe);
-            window.location.href = salesforceWebUrl;
-        }, 2000);
-    } else {
-        // Open in browser for non-mobile devices
-        window.location.href = salesforceWebUrl;
-    }
 }
