@@ -112,16 +112,16 @@ function redirectToSalesforce() {
     const webUrl = 'https://valvoline.my.salesforce.com/';
 
     if (isMobile) {
-        const start = new Date().getTime();
+        const timeout = setTimeout(() => {
+            // If the app did not open, navigate to the web URL
+            window.location.href = webUrl;
+        }, 2000); // 2 seconds delay
+
+        // Try to open the app
         window.location.href = appUrl;
 
-        setTimeout(function() {
-            const end = new Date().getTime();
-            // If the app is not opened, the time difference will be small
-            if (end - start < 1500) {
-                window.location.href = webUrl;
-            }
-        }, 1000); // 1 second delay
+        // Clear the timeout if the app opens successfully
+        window.addEventListener('blur', () => clearTimeout(timeout));
     } else {
         window.location.href = webUrl;
     }
