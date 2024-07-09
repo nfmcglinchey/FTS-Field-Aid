@@ -131,24 +131,20 @@ function redirectToSalesforce() {
 
 function redirectToSharePoint() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const sharePointUrl = isMobile 
-        ? 'ms-sharepoint://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg' 
-        : 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
+    const sharePointUrl = 'ms-sharepoint://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
+    const webUrl = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
 
     if (isMobile) {
-        const fallbackUrl = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
-        const start = Date.now();
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = sharePointUrl;
+        document.body.appendChild(iframe);
 
-        window.location.href = sharePointUrl;
-
-        // Check if the app was opened
         setTimeout(() => {
-            const elapsedTime = Date.now() - start;
-            if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
-                window.location.href = fallbackUrl;
-            }
-        }, 1500);
+            document.body.removeChild(iframe);
+            window.location.href = webUrl;
+        }, 1500); // Adjust the timeout as needed
     } else {
-        window.location.href = 'https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg';
+        window.location.href = webUrl;
     }
 }
