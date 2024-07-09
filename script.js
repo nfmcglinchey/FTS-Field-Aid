@@ -126,3 +126,24 @@ function redirectToSalesforce() {
         window.location.href = webUrl;
     }
 }
+
+function redirectToSharePoint() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const appUrl = 'sharepoint://valvolineglobal.sharepoint.com/sites/trustedadvisor';
+    const webUrl = 'https://valvolineglobal.sharepoint.com/sites/trustedadvisor';
+
+    if (isMobile) {
+        const timeout = setTimeout(() => {
+            // If the app did not open, navigate to the web URL
+            window.location.href = webUrl;
+        }, 2000); // 2 seconds delay
+
+        // Try to open the app
+        window.location.href = appUrl;
+
+        // Clear the timeout if the app opens successfully
+        window.addEventListener('blur', () => clearTimeout(timeout));
+    } else {
+        window.location.href = webUrl;
+    }
+}
