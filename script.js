@@ -72,7 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (event) {
             event.preventDefault();
             const targetUrl = this.getAttribute('href');
-            window.open(targetUrl, '_blank');
+            if (targetUrl === 'javascript:void(0)') {
+                redirectToSalesforce();
+            } else {
+                window.open(targetUrl, '_blank');
+            }
         });
     });
 
@@ -100,4 +104,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('show');
+}
+
+function redirectToSalesforce() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const salesforceUrl = isMobile ? 'salesforce1://valvoline.my.salesforce.com/' : 'https://valvoline.my.salesforce.com/';
+    window.location.href = salesforceUrl;
 }
