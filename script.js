@@ -117,10 +117,9 @@ function redirectToSalesforce() {
 
         window.location.href = salesforceUrl;
 
-        // Check if the app was opened
         setTimeout(() => {
             const elapsedTime = Date.now() - start;
-            if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
+            if (elapsedTime < 1500) {
                 window.location.href = fallbackUrl;
             }
         }, 1500);
@@ -143,7 +142,7 @@ function redirectToSharePoint() {
         setTimeout(() => {
             document.body.removeChild(iframe);
             window.location.href = webUrl;
-        }, 1500); // Adjust the timeout as needed
+        }, 1500);
     } else {
         window.location.href = webUrl;
     }
