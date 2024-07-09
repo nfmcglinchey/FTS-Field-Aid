@@ -131,7 +131,7 @@ function redirectToSalesforce() {
 
 function redirectToSharePoint(url) {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const sharePointUrl = isMobile ? url.replace('https://', 'ms-sharepoint://') : url;
+    const sharePointUrl = isMobile ? `ms-sharepoint://my.sharepoint.com/${url.replace('https://', '')}` : url;
 
     if (isMobile) {
         const fallbackUrl = url;
