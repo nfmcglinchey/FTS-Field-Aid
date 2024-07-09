@@ -73,9 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const targetUrl = this.getAttribute('href');
             if (targetUrl === 'javascript:void(0)') {
-                redirectToSalesforce();
-            } else if (targetUrl.includes('sharepoint.com')) {
-                redirectToSharePoint(targetUrl);
+                const redirectFunction = link.getAttribute('onclick');
+                eval(redirectFunction); // Call the specific redirect function
             } else {
                 window.open(targetUrl, '_blank');
             }
@@ -135,6 +134,7 @@ function redirectToSharePoint(url) {
     const sharePointUrl = isMobile ? url.replace('https://', 'ms-sharepoint://') : url;
 
     if (isMobile) {
+        const fallbackUrl = url;
         const start = Date.now();
 
         window.location.href = sharePointUrl;
@@ -143,7 +143,7 @@ function redirectToSharePoint(url) {
         setTimeout(() => {
             const elapsedTime = Date.now() - start;
             if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
-                window.location.href = url;
+                window.location.href = fallbackUrl;
             }
         }, 1500);
     } else {
