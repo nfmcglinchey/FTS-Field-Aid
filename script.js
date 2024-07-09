@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetUrl = this.getAttribute('href');
             if (targetUrl === 'javascript:void(0)') {
                 redirectToSalesforce();
+            } else if (targetUrl.includes('sharepoint.com')) {
+                redirectToSharePoint(targetUrl);
             } else {
                 window.open(targetUrl, '_blank');
             }
@@ -125,5 +127,26 @@ function redirectToSalesforce() {
         }, 1500);
     } else {
         window.location.href = salesforceUrl;
+    }
+}
+
+function redirectToSharePoint(url) {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const sharePointUrl = isMobile ? url.replace('https://', 'microsoft-sharepoint://') : url;
+
+    if (isMobile) {
+        const start = Date.now();
+
+        window.location.href = sharePointUrl;
+
+        // Check if the app was opened
+        setTimeout(() => {
+            const elapsedTime = Date.now() - start;
+            if (elapsedTime < 1500) {  // If less than 1.5 seconds have passed, the app wasn't opened
+                window.location.href = url;
+            }
+        }, 1500);
+    } else {
+        window.location.href = url;
     }
 }
