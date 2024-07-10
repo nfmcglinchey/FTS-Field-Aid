@@ -119,6 +119,10 @@ document.addEventListener('DOMContentLoaded', function () {
             sectionCheckbox.checked = allChecked;
         });
     });
+
+    document.querySelector('.hamburger').addEventListener('click', function () {
+        document.querySelector('.primary-nav ul').classList.toggle('show');
+    });
 });
 
 function toggleMenu() {
