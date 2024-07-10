@@ -42,6 +42,7 @@ header {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 0; /* Remove default margin */
 }
 
 .primary-nav ul li {
@@ -82,7 +83,7 @@ header {
     margin-top: 10px;
     display: block;
     width: calc(100% - 40px);
-    margin: 0 auto 10px auto;
+    margin: 10px auto; /* Center the input with auto margins */
 }
 
 @media (max-width: 600px) {
