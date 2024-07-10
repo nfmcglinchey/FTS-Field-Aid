@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 content.style.display = 'block';
             }
 
-            const headerOffset = 80; // Adjust this value based on your header height
+            const headerOffset = document.querySelector('header').offsetHeight + 10; // Adjust this value based on your header height
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
