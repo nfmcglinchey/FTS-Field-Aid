@@ -141,7 +141,7 @@ img {
 }
 
 main {
-    padding: 20px;
+    padding-top: 100px; /* Adjust padding based on your header height */
     flex: 1;
 }
 
