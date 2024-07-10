@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const strategicAccountButton = document.getElementById('strategic-account-button');
     const keyAccountContent = document.getElementById('key-account-content');
     const strategicAccountContent = document.getElementById('strategic-account-content');
+    const onLocationChecklistContent = document.getElementById('on-location-checklist-content');
 
     keyAccountContent.style.display = 'none';
     strategicAccountContent.style.display = 'none';
@@ -19,8 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
         contentToHide.style.display = 'none';
         if (contentToShow.style.display === 'block') {
             contentToShow.style.display = 'none';
+            onLocationChecklistContent.classList.remove('active');
         } else {
             contentToShow.style.display = 'block';
+            onLocationChecklistContent.classList.add('active');
         }
     }
 
