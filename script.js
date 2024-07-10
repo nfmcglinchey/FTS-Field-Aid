@@ -63,8 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 content.style.display = 'block';
             }
 
+            const headerOffset = 80; // Adjust this value based on your header height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
             window.scrollTo({
-                top: targetElement.offsetTop,
+                top: offsetPosition,
                 behavior: 'smooth'
             });
         });
