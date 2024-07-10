@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (content.style.display === 'block') {
             content.style.display = 'none';
         } else {
-            Object.values(sections).forEach(sec => sec.querySelector('.content').style.display = 'none');
             content.style.display = 'block';
             scrollToSection(section);
         }
