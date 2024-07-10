@@ -83,7 +83,8 @@ header {
     margin-top: 10px;
     display: block;
     width: calc(100% - 40px);
-    margin: 10px auto; /* Center the input with auto margins */
+    margin: 0 auto; /* Center the input with auto margins */
+    margin-bottom: 10px; /* Add margin bottom to create space below */
 }
 
 @media (max-width: 600px) {
