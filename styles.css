@@ -82,7 +82,7 @@ header {
     margin-top: 10px;
     display: block;
     width: calc(100% - 40px);
-    margin: 10px auto;
+    margin: 0 auto 10px auto;
 }
 
 @media (max-width: 600px) {
@@ -141,7 +141,7 @@ img {
 }
 
 main {
-    padding-top: 100px; /* Adjust padding based on your header height */
+    padding: 20px;
     flex: 1;
 }
 
