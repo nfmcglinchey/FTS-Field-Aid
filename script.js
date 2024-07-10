@@ -1,4 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const sections = {
+        'market-visit-checklist': document.getElementById('market-visit-checklist'),
+        'on-location-checklist': document.getElementById('on-location-checklist'),
+        'fts-tools': document.getElementById('fts-tools')
+    };
+
+    document.querySelectorAll('.nav-tab').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            toggleSection(sections[targetId]);
+        });
+    });
+
+    function toggleSection(section) {
+        const content = section.querySelector('.content');
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            Object.values(sections).forEach(sec => sec.querySelector('.content').style.display = 'none');
+            content.style.display = 'block';
+            scrollToSection(section);
+        }
+    }
+
+    function scrollToSection(section) {
+        const headerOffset = document.querySelector('header').offsetHeight + 10; // Adjust this value based on your header height
+        const elementPosition = section.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+
     const keyAccountButton = document.getElementById('key-account-button');
     const strategicAccountButton = document.getElementById('strategic-account-button');
     const keyAccountContent = document.getElementById('key-account-content');
@@ -50,29 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.querySelectorAll('.collapsible .content').forEach(div => div.style.display = 'none');
-
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            const content = targetElement.querySelector('.content');
-            if (content && content.style.display !== 'block') {
-                content.style.display = 'block';
-            }
-
-            const headerOffset = document.querySelector('header').offsetHeight + 10; // Adjust this value based on your header height
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        });
-    });
 
     const ftsToolLinks = document.querySelectorAll('#fts-tools nav ul li a');
     ftsToolLinks.forEach(link => {
