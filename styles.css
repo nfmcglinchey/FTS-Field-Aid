@@ -310,6 +310,20 @@ footer .social-links a:hover {
     cursor: pointer;
 }
 
+#on-location-checklist-content {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+    margin: 10px auto;
+    display: none; /* Hide initially */
+}
+
+#on-location-checklist-content.active {
+    display: block; /* Show when active */
+}
+
 /* Mobile view adjustments */
 @media (max-width: 600px) {
     .checklist-item {
@@ -363,6 +377,7 @@ footer .social-links a:hover {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 5px; /* Reduce gap between buttons */
     }
 
     #on-location-checklist-buttons button {
@@ -379,6 +394,11 @@ footer .social-links a:hover {
         border-radius: 5px;
         width: 90%;
         margin: 10px auto;
+        display: none; /* Hide initially */
+    }
+
+    #on-location-checklist-content.active {
+        display: block; /* Show when active */
     }
 }
 
