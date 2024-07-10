@@ -8,40 +8,32 @@ body {
     min-height: 100vh;
 }
 
-/* Header styling */
 header {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     background-color: #007bff;
     color: white;
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    z-index: 1000;
+    z-index: 1000; /* Ensure header is on top */
     position: relative;
 }
 
-/* Ensure logo is responsive */
 .logo {
     display: block;
     margin: 0 auto;
-    max-width: 100%;
-    height: auto;
 }
 
-/* Navigation bar styling */
 .primary-nav {
     background-color: #343a40;
     padding: 10px;
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 999; /* Ensure nav is below header but above other content */
     box-sizing: border-box;
     margin: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .primary-nav ul {
@@ -50,19 +42,18 @@ header {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0;
 }
 
 .primary-nav ul li {
     margin: 5px;
-    width: auto;
+    width: auto; /* Ensure width is flexible */
 }
 
 .primary-nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 15px;
+    padding: 10px 15px; /* Reduced padding from 10px 20px */
     background-color: #007bff;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
@@ -75,7 +66,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
+    width: auto; /* Ensure width is flexible */
 }
 
 .primary-nav ul li a:hover {
@@ -94,39 +85,75 @@ header {
     margin: 10px auto;
 }
 
-/* Hamburger menu, hidden by default */
-.hamburger {
-    display: none;
-    cursor: pointer;
+@media (max-width: 600px) {
+    .hamburger {
+        display: block;
+    }
+
+    .primary-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #343a40;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .primary-nav ul.show {
+        display: flex;
+    }
+
+    .primary-nav ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .primary-nav ul li a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .primary-nav input[type="text"] {
+        width: 90%;
+    }
+
+    .collapsible h2 {
+        font-size: 18px;
+    }
+
+    .collapsible .content {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+
+    footer .social-links a {
+        margin: 5px 0;
+    }
 }
 
-.hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
-}
-
-/* Responsive images */
 img {
     max-width: 100%;
     height: auto;
 }
 
 main {
-    padding: 10px;
+    padding: 20px;
     flex: 1;
 }
 
-/* Collapsible sections styling */
 .collapsible {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 10px;
     background-color: white;
-    max-width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
 }
 
@@ -175,7 +202,67 @@ ul ul {
     color: inherit;
 }
 
-/* Footer styling */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.collapsible .content nav {
+    background-color: #343a40;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 1; /* Ensure it is below primary nav */
+    position: relative;
+}
+
+.collapsible .content nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.collapsible .content nav ul li {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.collapsible .content nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; /* Reduced padding */
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Adjust width to make it narrower */
+    max-width: 300px; /* Set a maximum width for the tabs */
+    margin: 0 auto; /* Center the tabs */
+}
+
+.collapsible .content nav ul li a:hover {
+    background-color: #0056b3;
+    color: yellow;
+    border: 2px solid white;
+}
+
 footer {
     background-color: #343a40;
     color: white;
@@ -208,6 +295,77 @@ footer .social-links a:hover {
     background-color: #f1f1f1;
     padding: 5px;
     border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+    .checklist-item {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .checklist-item input[type="checkbox"] {
+        margin-right: 10px;
+        margin-top: 4px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .primary-nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #343a40;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .primary-nav ul.show {
+        display: flex;
+    }
+
+    .primary-nav ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .primary-nav ul li a {
+        width: 90%;
+        text-align: center;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+
+    .primary-nav input[type="text"] {
+        width: 90%;
+    }
+
+    footer .social-links a {
+        margin: 5px 0;
+    }
+
+    #on-location-checklist-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #on-location-checklist-buttons button {
+        width: 90%;
+        margin: 5px 0;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #on-location-checklist-content {
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 90%;
+        margin: 10px auto;
+    }
 }
 
 .contact-section {
@@ -270,73 +428,4 @@ footer .social-links a:hover {
     border-radius: 5px;
     margin-top: 10px;
     background-color: #f9f9f9;
-}
-
-/* Mobile-specific styles */
-@media (max-width: 600px) {
-    header {
-        padding: 10px;
-    }
-
-    .primary-nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #343a40;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    .primary-nav ul.show {
-        display: flex;
-    }
-
-    .primary-nav ul li {
-        margin: 5px 0;
-        width: 100%;
-    }
-
-    .primary-nav ul li a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .primary-nav input[type="text"] {
-        width: 90%;
-    }
-
-    footer .social-links a {
-        margin: 5px 0;
-    }
-
-    .checklist-item {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    #on-location-checklist-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #on-location-checklist-buttons button {
-        width: 90%;
-        margin: 5px 0;
-        padding: 10px;
-        font-size: 16px;
-    }
-
-    #on-location-checklist-content {
-        padding: 10px;
-        background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 90%;
-        margin: 10px auto;
-    }
 }
