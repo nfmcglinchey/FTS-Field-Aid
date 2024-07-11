@@ -429,3 +429,9 @@ footer .social-links a:hover {
     margin-top: 10px;
     background-color: #f9f9f9;
 }
+
+/* New CSS for hiding content by default */
+#key-account-content,
+#strategic-account-content {
+    display: none;
+}
