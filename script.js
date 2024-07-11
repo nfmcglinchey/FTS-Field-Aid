@@ -66,7 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
     collapsibleHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
         });
     });
 
@@ -115,6 +119,25 @@ document.addEventListener('DOMContentLoaded', function () {
             sectionCheckbox.checked = allChecked;
         });
     });
+
+    // Modal code
+    const modal = document.getElementById('pdfModal');
+    const btn = document.getElementById('openModalBtn');
+    const span = document.getElementsByClassName('close-btn')[0];
+
+    btn.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
 });
 
 function toggleMenu() {
