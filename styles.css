@@ -429,20 +429,3 @@ footer .social-links a:hover {
     margin-top: 10px;
     background-color: #f9f9f9;
 }
-
-/* Ensure the content is hidden by default */
-#key-account-content,
-#strategic-account-content {
-    display: none;
-}
-
-/* Adjust the outline box */
-#on-location-checklist .content {
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    max-height: 0;
-}
-
-#on-location-checklist .content.active {
-    max-height: 1000px; /* A large value to allow full expansion */
-}
