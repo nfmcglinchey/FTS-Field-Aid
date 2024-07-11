@@ -480,6 +480,6 @@ footer .social-links a:hover {
 .modal-content embed {
     flex: 1;
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 50px); /* Ensure it fits within the modal */
     border: none;
 }
