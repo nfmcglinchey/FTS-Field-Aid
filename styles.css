@@ -444,5 +444,5 @@ footer .social-links a:hover {
 }
 
 #on-location-checklist .content.active {
-    max-height: 500px; /* Adjust the max-height as needed */
+    max-height: 1000px; /* A large value to allow full expansion */
 }
