@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const keyAccountContent = document.getElementById('key-account-content');
     const strategicAccountContent = document.getElementById('strategic-account-content');
     const onLocationChecklistContent = document.getElementById('on-location-checklist-content');
+    const onLocationChecklistSection = document.getElementById('on-location-checklist');
 
     keyAccountContent.style.display = 'none';
     strategicAccountContent.style.display = 'none';
