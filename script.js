@@ -1,32 +1,64 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const sections = {
+        'market-visit-checklist': document.getElementById('market-visit-checklist'),
+        'on-location-checklist': document.getElementById('on-location-checklist'),
+        'fts-tools': document.getElementById('fts-tools')
+    };
+
+    document.querySelectorAll('.nav-tab').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            toggleSection(sections[targetId]);
+        });
+    });
+
+    function toggleSection(section) {
+        const content = section.querySelector('.content');
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+            scrollToSection(section);
+        }
+    }
+
+    function scrollToSection(section) {
+        const headerOffset = document.querySelector('header').offsetHeight + 10; // Adjust this value based on your header height
+        const elementPosition = section.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+
     const keyAccountButton = document.getElementById('key-account-button');
     const strategicAccountButton = document.getElementById('strategic-account-button');
     const keyAccountContent = document.getElementById('key-account-content');
     const strategicAccountContent = document.getElementById('strategic-account-content');
     const onLocationChecklistContent = document.getElementById('on-location-checklist-content');
-    const onLocationChecklistSection = document.getElementById('on-location-checklist');
 
     keyAccountContent.style.display = 'none';
     strategicAccountContent.style.display = 'none';
 
     keyAccountButton.addEventListener('click', function () {
-        toggleContent(keyAccountContent, strategicAccountContent);
+        showContent(keyAccountContent, strategicAccountContent);
     });
 
     strategicAccountButton.addEventListener('click', function () {
-        toggleContent(strategicAccountContent, keyAccountContent);
+        showContent(strategicAccountContent, keyAccountContent);
     });
 
-    function toggleContent(contentToShow, contentToHide) {
+    function showContent(contentToShow, contentToHide) {
         contentToHide.style.display = 'none';
         if (contentToShow.style.display === 'block') {
             contentToShow.style.display = 'none';
             onLocationChecklistContent.classList.remove('active');
-            onLocationChecklistContent.style.maxHeight = '0';
         } else {
             contentToShow.style.display = 'block';
             onLocationChecklistContent.classList.add('active');
-            onLocationChecklistContent.style.maxHeight = contentToShow.scrollHeight + 'px';
         }
     }
 
