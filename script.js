@@ -44,14 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
     strategicAccountContent.style.display = 'none';
 
     keyAccountButton.addEventListener('click', function () {
-        showContent(keyAccountContent, strategicAccountContent);
+        toggleContent(keyAccountContent, strategicAccountContent);
     });
 
     strategicAccountButton.addEventListener('click', function () {
-        showContent(strategicAccountContent, keyAccountContent);
+        toggleContent(strategicAccountContent, keyAccountContent);
     });
 
-    function showContent(contentToShow, contentToHide) {
+    function toggleContent(contentToShow, contentToHide) {
         contentToHide.style.display = 'none';
         if (contentToShow.style.display === 'block') {
             contentToShow.style.display = 'none';
