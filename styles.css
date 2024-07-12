@@ -497,3 +497,49 @@ footer .social-links a:hover {
         height: calc(100% - 40px);
     }
 }
+
+/* Additional styles for larger screens */
+@media (min-width: 600px) {
+    #openModalBtn, #key-account-button, #strategic-account-button {
+        padding: 15px 25px; /* Increase padding for a better look on larger screens */
+        font-size: 18px; /* Increase font size for better readability */
+        width: 200px; /* Set a fixed width for uniformity */
+        margin: 10px auto; /* Center the buttons and add some margin */
+        display: block; /* Ensure the buttons are displayed as block elements */
+        text-align: center; /* Center the text inside the buttons */
+        background-color: #007bff; /* Background color */
+        color: white; /* Text color */
+        border: none; /* Remove any borders */
+        border-radius: 5px; /* Add rounded corners */
+        cursor: pointer; /* Change cursor to pointer */
+        transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effects */
+    }
+
+    #openModalBtn:hover, #key-account-button:hover, #strategic-account-button:hover {
+        background-color: #0056b3; /* Darker background color on hover */
+        transform: scale(1.05); /* Slightly enlarge button on hover */
+    }
+}
+
+/* Styles for smaller screens */
+@media (max-width: 600px) {
+    .styled-button, #openModalBtn, #key-account-button, #strategic-account-button {
+        padding: 10px; /* Padding for mobile */
+        font-size: 16px; /* Font size for mobile */
+        width: 90%; /* Full width on mobile */
+        margin: 5px auto; /* Center the buttons and add some margin */
+        display: block; /* Ensure the buttons are displayed as block elements */
+        text-align: center; /* Center the text inside the buttons */
+        background-color: #007bff; /* Background color */
+        color: white; /* Text color */
+        border: none; /* Remove any borders */
+        border-radius: 5px; /* Add rounded corners */
+        cursor: pointer; /* Change cursor to pointer */
+        transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effects */
+    }
+
+    .styled-button:hover, #openModalBtn:hover, #key-account-button:hover, #strategic-account-button:hover {
+        background-color: #0056b3; /* Darker background color on hover */
+        transform: scale(1.05); /* Slightly enlarge button on hover */
+    }
+}
