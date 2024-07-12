@@ -124,9 +124,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('pdfModal');
     const btn = document.getElementById('openModalBtn');
     const span = document.getElementsByClassName('close-btn')[0];
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     btn.onclick = function() {
-        modal.style.display = 'block';
+        if (isMobile) {
+            window.open('FTS Field Aid.pdf', '_blank');
+        } else {
+            modal.style.display = 'block';
+        }
     }
 
     span.onclick = function() {
