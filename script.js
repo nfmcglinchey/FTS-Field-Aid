@@ -44,21 +44,22 @@ document.addEventListener('DOMContentLoaded', function () {
     strategicAccountContent.style.display = 'none';
 
     keyAccountButton.addEventListener('click', function () {
-        showContent(keyAccountContent, strategicAccountContent);
+        toggleContent(keyAccountContent, strategicAccountContent);
     });
 
     strategicAccountButton.addEventListener('click', function () {
-        showContent(strategicAccountContent, keyAccountContent);
+        toggleContent(strategicAccountContent, keyAccountContent);
     });
 
-    function showContent(contentToShow, contentToHide) {
+    function toggleContent(contentToShow, contentToHide) {
+        contentToHide.classList.remove('active');
         contentToHide.style.display = 'none';
-        if (contentToShow.style.display === 'block') {
+        if (contentToShow.classList.contains('active')) {
+            contentToShow.classList.remove('active');
             contentToShow.style.display = 'none';
-            onLocationChecklistContent.classList.remove('active');
         } else {
+            contentToShow.classList.add('active');
             contentToShow.style.display = 'block';
-            onLocationChecklistContent.classList.add('active');
         }
     }
 
