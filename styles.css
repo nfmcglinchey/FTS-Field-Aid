@@ -430,6 +430,10 @@ footer .social-links a:hover {
     background-color: #f9f9f9;
 }
 
+.checklist-content.active {
+    display: block;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; 
@@ -571,4 +575,11 @@ footer .social-links a:hover {
     background-color: #0056b3;
     color: yellow;
     border: 2px solid white;
+}
+
+/* Ensure the on-location checklist content doesn't show an empty box */
+#on-location-checklist-content {
+    border: none;
+    padding: 0;
+    background: none;
 }
