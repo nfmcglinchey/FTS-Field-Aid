@@ -159,6 +159,9 @@
                         </ul>
                     </div>
                 </section>
+
+                <!-- Button to open the modal -->
+                <button id="openModalBtn" class="styled-button">Full Market Visit</button>
             </div>
         </section>
 
@@ -166,24 +169,25 @@
             <h2>On Location Checklist</h2>
             <div class="content">
                 <div id="on-location-checklist-buttons">
-                    <button id="key-account-button">Key Account</button>
-                    <button id="strategic-account-button">Strategic Account</button>
+                    <button id="key-account-button" class="styled-button">Key Account</button>
+                    <button id="strategic-account-button" class="styled-button">Strategic Account</button>
                 </div>
                 <div id="on-location-checklist-content">
                     <div id="key-account-content" class="checklist-content">
                         <h3>Key Account Checklist</h3>
                         <ul>
-                            <li>Key Account Item 1</li>
-                            <li>Key Account Item 2</li>
+                            <li>Definition of what a key account is</li>
+                            <li>Examples of why key accounts are important</li>
                         </ul>
+                        <p><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/Visit%20Checklists/Key%20Visit%20Checklists?csf=1&web=1&e=NKtzyO" target="_blank">Key Visit Checklists</a></p>
                     </div>
                     <div id="strategic-account-content" class="checklist-content">
                         <h3>Strategic Account Checklist</h3>
                         <ul>
-                            <li>Strategic Account Item 1</li>
-                            <li>Strategic Account Item 2</li>
+                            <li>Definition of what strategic account is</li>
+                            <li>Examples of why strategic accounts are important</li>
                         </ul>
-                        <p><a href="https://chatgpt.com/g/g-z3YBXrFGq-strickland-brothers-info-assistant" target="_blank">Strickland Brothers Info Assistant</a></p>
+                        <p><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/Visit%20Checklists/Strategic%20Visit%20Checklists?csf=1&web=1&e=zXqDTW" target="_blank">Strategic Visit Checklists</a></p>
                         <!-- New link added here -->
                         <p><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/StricklandBrothersOnboardingTeam/Shared%20Documents/Training%20Team?csf=1&web=1&e=e8v2VI" target="_blank">Strickland Brothers</a></p>
                     </div>
@@ -202,12 +206,18 @@
                         <li><a href="https://valvolineglobal.sharepoint.com/sites/trustedadvisor" target="_blank" class="fts-nav-tab">Trusted Advisor Toolbox</a></li>
                         <li><a href="https://valvoline.widencollective.com/portals/dhuiipjz/EquipmentTrainingLibrary" target="_blank" class="fts-nav-tab">Equipment Library</a></li>
                         <li><a href="https://dash.valvolineglobal.com/portal/index.html#/productFinderLite/productFinder" target="_blank" class="fts-nav-tab">Product Finder</a></li>
-                        <!-- New button added below -->
-                        <li><a href="https://valvolineglobal.sharepoint.com/:f:/s/FTSTeam/EmsmNaKzloVCmRYfM6U5orIB1Qe7D9bqWI6RBh6RMg1vgA?e=AdVDf2" target="_blank" class="fts-nav-tab">Territory Files</a></li>
                     </ul>
                 </nav>
             </div>
         </section>
+
+        <!-- Modal structure -->
+        <div id="pdfModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <embed src="FTS Field Aid.pdf" type="application/pdf" />
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Valvoline Global Products. All rights reserved.</p>
