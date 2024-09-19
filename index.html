@@ -1,176 +1,225 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="FTS Field Aid Checklist for improving field service management and customer satisfaction.">
+    <meta name="keywords" content="FTS, Field Aid, Checklist, Field Service, Customer Service">
+    <title>FTS Field Aid Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="VGO Logo.jpg" class="logo" alt="VGO Logo" width="200" height="200">
+        <h1>FTS Field Aid</h1>
+    </header>
+    <nav class="primary-nav">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="#market-visit-checklist" class="nav-tab">Market Visit Checklist</a></li>
+            <li><a href="#on-location-checklist" class="nav-tab">On Location Checklist</a></li>
+            <li><a href="#fts-tools" class="nav-tab">FTS Tools</a></li>
+        </ul>
+        <input type="text" id="search" placeholder="Search...">
+    </nav>
+    <main>
+        <section id="market-visit-checklist" class="collapsible">
+            <h2>Market Visit Checklist</h2>
+            <div class="content">
+                <section id="pre-visit" class="collapsible">
+                    <h2>Part 1: Pre-Visit <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <h3>Salesforce Account Review</h3>
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Check the account hierarchy, call history, and contacts.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Look under the parent account in the related tab for specific customer goals.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Understand the business objectives that the customer aims to achieve.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Identify active promotions for the customer in Salesforce under the related tab in enrollment locations.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-    function addClickOrTouchEventListener(element, callback) {
-        if (isMobile) {
-            element.addEventListener('touchstart', callback);
-        } else {
-            element.addEventListener('click', callback);
-        }
-    }
+                <section id="dm-meeting" class="collapsible">
+                    <h2>Part 2: District Manager (DM) Meeting <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <h3>Create Pre-Cap for DM</h3>
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Craft personalized pre-visit communications addressed to the DM emphasizing training goals and requesting a meeting.</span>
+                            </li>
+                        </ul>
+                        <h3>Plan for the DM Meeting</h3>
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Schedule a meeting with the DM to discuss strategies and address potential objections.</span>
+                            </li>
+                            <li>
+                                Possible topics to cover during the meeting:
+                                <ul>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Introduction and welcome.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Overview of the visit purpose and goals.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Training session plans.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Current market snapshot using data analytics.</span>
+                                    </li>
+                                    <li class="checklist-item">
+                                        <input type="checkbox" class="item-checkbox">
+                                        <span class="item-text">Proposed strategies for improvement.</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-    const sections = {
-        'market-visit-checklist': document.getElementById('market-visit-checklist'),
-        'on-location-checklist': document.getElementById('on-location-checklist'),
-        'fts-tools': document.getElementById('fts-tools')
-    };
+                <section id="objection-handling" class="collapsible">
+                    <h2>Part 3: Objection Handling <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Anticipate potential objections and prepare persuasive responses.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-    // Navigation tab functionality
-    document.querySelectorAll('.nav-tab').forEach(button => {
-        addClickOrTouchEventListener(button, function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const section = document.getElementById(targetId);
-            toggleSection(section);
-        });
-    });
+                <section id="location-visit" class="collapsible">
+                    <h2>Part 4: Location Visit <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Provide targeted training based on VIA/SAC SF findings and DM meeting insights.</span>
+                            </li>
+                            <li>Topics to cover:</li>
+                            <ul>
+                                <li class="checklist-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-text">Sales strategies and best practices.</span>
+                                </li>
+                                <li class="checklist-item">
+                                    <input type="checkbox" class="item-checkbox">
+                                    <span class="item-text">Product knowledge and promotion execution techniques.</span>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </section>
 
-    // Function to toggle sections visibility
-    function toggleSection(section) {
-        const content = section.querySelector('.content');
-        if (content.style.display === 'block') {
-            content.style.display = 'none';
-        } else {
-            content.style.display = 'block';
-            scrollToSection(section);
-        }
-    }
+                <section id="post-visit" class="collapsible">
+                    <h2>Part 5: Post-Visit <input type="checkbox" class="section-checkbox"></h2>
+                    <div class="content">
+                        <ul>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Update Salesforce with information gathered during the visit.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Send recap email summarizing key points and offering ongoing support.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Hold a post-visit debriefing with the account manager to discuss training effectiveness and areas for improvement.</span>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" class="item-checkbox">
+                                <span class="item-text">Discuss and order any POS or equipment needed.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
 
-    // Scroll to section function
-    function scrollToSection(section) {
-        const headerOffset = document.querySelector('header').offsetHeight + 10; // Adjust based on header height
-        const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                <!-- Collapsible PDF Section -->
+                <section id="pdf-section" class="collapsible">
+                    <h2>FTS Field Aid PDF</h2>
+                    <div class="content">
+                        <embed id="pdfEmbed" src="FTS Field Aid.pdf" width="100%" height="600px" type="application/pdf">
+                        <!-- Full-screen option for mobile -->
+                        <div class="mobile-fullscreen">
+                            <p>Having trouble viewing? <a href="FTS Field Aid.pdf" target="_blank">Open in Full Screen</a></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
 
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }
+        <section id="on-location-checklist" class="collapsible">
+            <h2>On Location Checklist</h2>
+            <div class="content">
+                <div id="on-location-checklist-buttons">
+                    <button id="key-account-button">Key Account</button>
+                    <button id="strategic-account-button">Strategic Account</button>
+                </div>
+                <div id="on-location-checklist-content">
+                    <div id="key-account-content" class="checklist-content">
+                        <h3>Key Account Checklist</h3>
+                        <ul>
+                            <li>Key Account Item 1</li>
+                            <li>Key Account Item 2</li>
+                        </ul>
+                    </div>
+                    <div id="strategic-account-content" class="checklist-content">
+                        <h3>Strategic Account Checklist</h3>
+                        <ul>
+                            <li>Strategic Account Item 1</li>
+                            <li>Strategic Account Item 2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    // Collapsible section headers functionality
-    const collapsibleHeaders = document.querySelectorAll('.collapsible > h2');
-    collapsibleHeaders.forEach(header => {
-        addClickOrTouchEventListener(header, () => {
-            const content = header.nextElementSibling;
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
-        });
-    });
-
-    // Initially hide all collapsible content
-    document.querySelectorAll('.collapsible .content').forEach(div => div.style.display = 'none');
-
-    // Search functionality
-    const searchInput = document.getElementById('search');
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        const sections = document.querySelectorAll('main section');
-        sections.forEach(section => {
-            const text = section.textContent.toLowerCase();
-            section.style.display = text.includes(query) ? 'block' : 'none';
-        });
-    });
-
-    // Toggle content for Key Account and Strategic Account
-    const keyAccountButton = document.getElementById('key-account-button');
-    const strategicAccountButton = document.getElementById('strategic-account-button');
-    const keyAccountContent = document.getElementById('key-account-content');
-    const strategicAccountContent = document.getElementById('strategic-account-content');
-
-    keyAccountContent.style.display = 'none';
-    strategicAccountContent.style.display = 'none';
-
-    addClickOrTouchEventListener(keyAccountButton, function () {
-        toggleContent(keyAccountContent, strategicAccountContent);
-    });
-
-    addClickOrTouchEventListener(strategicAccountButton, function () {
-        toggleContent(strategicAccountContent, keyAccountContent);
-    });
-
-    function toggleContent(contentToShow, contentToHide) {
-        contentToHide.classList.remove('active');
-        contentToHide.style.display = 'none';
-        if (contentToShow.classList.contains('active')) {
-            contentToShow.classList.remove('active');
-            contentToShow.style.display = 'none';
-        } else {
-            contentToShow.classList.add('active');
-            contentToShow.style.display = 'block';
-        }
-    }
-
-    // Modal functionality for viewing PDF
-    const modal = document.getElementById('pdfModal');
-    const btn = document.getElementById('openModalBtn');
-    const span = document.getElementsByClassName('close-btn')[0];
-
-    btn.onclick = function() {
-        if (isMobile) {
-            window.open('FTS Field Aid.pdf', '_blank');
-        } else {
-            modal.style.display = 'block';
-        }
-    }
-
-    span.onclick = function() {
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-
-    // Handling checkboxes for sections and items
-    const sectionCheckboxes = document.querySelectorAll('.section-checkbox');
-    sectionCheckboxes.forEach(sectionCheckbox => {
-        addClickOrTouchEventListener(sectionCheckbox, function () {
-            const section = this.closest('section');
-            const itemCheckboxes = section.querySelectorAll('.item-checkbox');
-            itemCheckboxes.forEach(itemCheckbox => {
-                itemCheckbox.checked = this.checked;
-            });
-        });
-    });
-
-    const itemCheckboxes = document.querySelectorAll('.item-checkbox');
-    itemCheckboxes.forEach(itemCheckbox => {
-        addClickOrTouchEventListener(itemCheckbox, function () {
-            const section = this.closest('section');
-            const sectionCheckbox = section.querySelector('.section-checkbox');
-            const allChecked = section.querySelectorAll('.item-checkbox:checked').length === section.querySelectorAll('.item-checkbox').length;
-            sectionCheckbox.checked = allChecked;
-        });
-    });
-});
-
-function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('show');
-}
-
-function redirectToSalesforce() {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const appUrl = 'salesforce1://valvoline.my.salesforce.com/';
-    const webUrl = 'https://valvoline.my.salesforce.com/';
-
-    if (isMobile) {
-        const timeout = setTimeout(() => {
-            // If the app did not open, navigate to the web URL
-            window.location.href = webUrl;
-        }, 2000); // 2 seconds delay
-
-        // Try to open the app
-        window.location.href = appUrl;
-
-        // Clear the timeout if the app opens successfully
-        window.addEventListener('blur', () => clearTimeout(timeout));
-    } else {
-        window.location.href = webUrl;
-    }
-}
+        <section id="fts-tools" class="collapsible">
+            <h2>FTS Tools</h2>
+            <div class="content">
+                <nav>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="redirectToSalesforce()" class="fts-nav-tab">Salesforce</a></li>
+                        <li><a href="https://valvoline.us10.sapanalytics.cloud/sap/fpa/ui/app.html#/home" target="_blank" class="fts-nav-tab">FTS Scorecard</a></li>
+                        <li><a href="https://valvolineglobal.sharepoint.com/:f:/r/sites/FTSTeam/Shared%20Documents/General/FTS%20Resources?csf=1&web=1&e=9bKhrg" target="_blank" class="fts-nav-tab">Supporting Documents</a></li>
+                        <li><a href="https://valvolineglobal.sharepoint.com/sites/trustedadvisor" target="_blank" class="fts-nav-tab">Trusted Advisor Toolbox</a></li>
+                        <li><a href="https://valvoline.widencollective.com/portals/dhuiipjz/EquipmentTrainingLibrary" target="_blank" class="fts-nav-tab">Equipment Library</a></li>
+                        <li><a href="https://dash.valvolineglobal.com/portal/index.html#/productFinderLite/productFinder" target="_blank" class="fts-nav-tab">Product Finder</a></li>
+                        <li><a href="https://valvolineglobal.sharepoint.com/:f:/s/FTSTeam/EmsmNaKzloVCmRYfM6U5orIB1Qe7D9bqWI6RBh6RMg1vgA?e=AdVDf2" target="_blank" class="fts-nav-tab">Territory Files</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Valvoline Global Products. All rights reserved.</p>
+        <p id="phone-number"><a href="tel:+18008326825">1-800-TeamVal</a></p>
+    </footer>
+</body>
+</html>
