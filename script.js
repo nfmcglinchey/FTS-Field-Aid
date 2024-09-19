@@ -3,7 +3,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addClickOrTouchEventListener(element, callback) {
         if (isMobile) {
-            element.addEventListener('touchstart', callback);
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            element.addEventListener('touchstart', function(event) {
+                touchStartX = event.changedTouches[0].screenX;
+                touchStartY = event.changedTouches[0].screenY;
+            });
+
+            element.addEventListener('touchend', function(event) {
+                const touchEndX = event.changedTouches[0].screenX;
+                const touchEndY = event.changedTouches[0].screenY;
+
+                const touchMovementX = Math.abs(touchEndX - touchStartX);
+                const touchMovementY = Math.abs(touchEndY - touchStartY);
+
+                // Define a threshold for minimal movement to distinguish between a tap and scroll
+                const threshold = 10; // Adjust this value if needed
+
+                if (touchMovementX < threshold && touchMovementY < threshold) {
+                    callback(event); // Execute the action only if it's a tap (minimal movement)
+                }
+            });
         } else {
             element.addEventListener('click', callback);
         }
