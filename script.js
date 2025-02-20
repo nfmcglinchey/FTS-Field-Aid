@@ -1,197 +1,216 @@
+/****************************************************
+ * script.js
+ * 1. Collapsible sections
+ * 2. Mobile hamburger menu
+ * 3. Search functionality
+ * 4. Key metrics placeholders
+ * 5. Generate Recap Email
+ * 6. Download Offline Version
+ * 7. Progress tracking in localStorage
+ * 8. PWA Service Worker Registration
+ ****************************************************/
+
 document.addEventListener('DOMContentLoaded', function () {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    function addClickOrTouchEventListener(element, callback) {
-        if (isMobile) {
-            let touchStartX = 0;
-            let touchStartY = 0;
-
-            element.addEventListener('touchstart', function(event) {
-                touchStartX = event.changedTouches[0].screenX;
-                touchStartY = event.changedTouches[0].screenY;
-            });
-
-            element.addEventListener('touchend', function(event) {
-                const touchEndX = event.changedTouches[0].screenX;
-                const touchEndY = event.changedTouches[0].screenY;
-
-                const touchMovementX = Math.abs(touchEndX - touchStartX);
-                const touchMovementY = Math.abs(touchEndY - touchStartY);
-
-                // Define a threshold for minimal movement to distinguish between a tap and scroll
-                const threshold = 10; // Adjust this value if needed
-
-                if (touchMovementX < threshold && touchMovementY < threshold) {
-                    callback(event); // Execute the action only if it's a tap (minimal movement)
-                }
-            });
-        } else {
-            element.addEventListener('click', callback);
+  // Helper function for clicks/taps
+  function addClickOrTouchEventListener(element, callback) {
+    if (!element) return;
+    if (isMobile) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      element.addEventListener('touchstart', function (event) {
+        touchStartX = event.changedTouches[0].screenX;
+        touchStartY = event.changedTouches[0].screenY;
+      });
+      element.addEventListener('touchend', function (event) {
+        const touchEndX = event.changedTouches[0].screenX;
+        const touchEndY = event.changedTouches[0].screenY;
+        const touchMovementX = Math.abs(touchEndX - touchStartX);
+        const touchMovementY = Math.abs(touchEndY - touchStartY);
+        const threshold = 10;
+        if (touchMovementX < threshold && touchMovementY < threshold) {
+          callback(event);
         }
+      });
+    } else {
+      element.addEventListener('click', callback);
     }
+  }
 
-    const sections = {
-        'market-visit-checklist': document.getElementById('market-visit-checklist'),
-        'on-location-checklist': document.getElementById('on-location-checklist'),
-        'fts-tools': document.getElementById('fts-tools')
-    };
-
-    // Navigation tab functionality
-    document.querySelectorAll('.nav-tab').forEach(button => {
-        addClickOrTouchEventListener(button, function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const section = document.getElementById(targetId);
-            toggleSection(section);
-        });
+  // Collapsible Sections
+  const collapsibleSections = document.querySelectorAll('.collapsible > h2');
+  collapsibleSections.forEach(header => {
+    addClickOrTouchEventListener(header, () => {
+      const content = header.nextElementSibling;
+      if (!content) return;
+      content.style.display = (content.style.display === 'block') ? 'none' : 'block';
     });
+  });
+  document.querySelectorAll('.collapsible .content').forEach(div => {
+    div.style.display = 'none';
+  });
 
-    // Function to toggle sections visibility
-    function toggleSection(section) {
+  // Navigation Tabs
+  const navTabs = document.querySelectorAll('.nav-tab');
+  navTabs.forEach(tab => {
+    addClickOrTouchEventListener(tab, function (event) {
+      event.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const section = document.getElementById(targetId);
+      if (section) {
         const content = section.querySelector('.content');
-        if (content.style.display === 'block') {
-            content.style.display = 'none';
-        } else {
-            content.style.display = 'block';
-            scrollToSection(section);
+        if (content) {
+          content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+          scrollToSection(section);
         }
-    }
-
-    // Scroll to section function
-    function scrollToSection(section) {
-        const headerOffset = document.querySelector('header').offsetHeight + 10; // Adjust based on header height
-        const elementPosition = section.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }
-
-    // Collapsible section headers functionality
-    const collapsibleHeaders = document.querySelectorAll('.collapsible > h2');
-    collapsibleHeaders.forEach(header => {
-        addClickOrTouchEventListener(header, () => {
-            const content = header.nextElementSibling;
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
-        });
+      }
     });
+  });
+  function scrollToSection(section) {
+    const headerOffset = document.querySelector('header').offsetHeight + 10;
+    const elementPosition = section.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+  }
 
-    // Initially hide all collapsible content
-    document.querySelectorAll('.collapsible .content').forEach(div => div.style.display = 'none');
+  // Hamburger Menu
+  window.toggleMenu = function() {
+    document.getElementById('nav-menu').classList.toggle('show');
+  };
 
-    // Search functionality
-    const searchInput = document.getElementById('search');
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        const sections = document.querySelectorAll('main section');
-        sections.forEach(section => {
-            const text = section.textContent.toLowerCase();
-            section.style.display = text.includes(query) ? 'block' : 'none';
-        });
+  // Search
+  const searchInput = document.getElementById('search');
+  addClickOrTouchEventListener(searchInput, function (e) {
+    e.stopPropagation();
+  });
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    const sections = document.querySelectorAll('main section');
+    sections.forEach(section => {
+      const text = section.textContent.toLowerCase();
+      section.style.display = text.includes(query) ? 'block' : 'none';
     });
+  });
 
-    // Toggle content for Key Account and Strategic Account
-    const keyAccountButton = document.getElementById('key-account-button');
-    const strategicAccountButton = document.getElementById('strategic-account-button');
-    const keyAccountContent = document.getElementById('key-account-content');
-    const strategicAccountContent = document.getElementById('strategic-account-content');
-
-    keyAccountContent.style.display = 'none';
-    strategicAccountContent.style.display = 'none';
-
-    addClickOrTouchEventListener(keyAccountButton, function () {
-        toggleContent(keyAccountContent, strategicAccountContent);
-    });
-
-    addClickOrTouchEventListener(strategicAccountButton, function () {
-        toggleContent(strategicAccountContent, keyAccountContent);
-    });
-
-    function toggleContent(contentToShow, contentToHide) {
-        contentToHide.classList.remove('active');
-        contentToHide.style.display = 'none';
-        if (contentToShow.classList.contains('active')) {
-            contentToShow.classList.remove('active');
-            contentToShow.style.display = 'none';
-        } else {
-            contentToShow.classList.add('active');
-            contentToShow.style.display = 'block';
-        }
+  // On Location Checklist Switcher
+  const keyAccountButton = document.getElementById('key-account-button');
+  const strategicAccountButton = document.getElementById('strategic-account-button');
+  const keyAccountContent = document.getElementById('key-account-content');
+  const strategicAccountContent = document.getElementById('strategic-account-content');
+  if (keyAccountContent) keyAccountContent.style.display = 'none';
+  if (strategicAccountContent) strategicAccountContent.style.display = 'none';
+  addClickOrTouchEventListener(keyAccountButton, function () {
+    toggleContent(keyAccountContent, strategicAccountContent);
+  });
+  addClickOrTouchEventListener(strategicAccountButton, function () {
+    toggleContent(strategicAccountContent, keyAccountContent);
+  });
+  function toggleContent(contentToShow, contentToHide) {
+    if (!contentToShow || !contentToHide) return;
+    contentToHide.classList.remove('active');
+    contentToHide.style.display = 'none';
+    if (contentToShow.classList.contains('active')) {
+      contentToShow.classList.remove('active');
+      contentToShow.style.display = 'none';
+    } else {
+      contentToShow.classList.add('active');
+      contentToShow.style.display = 'block';
     }
+  }
 
-    // Modal functionality for viewing PDF
-    const modal = document.getElementById('pdfModal');
-    const btn = document.getElementById('openModalBtn');
-    const span = document.getElementsByClassName('close-btn')[0];
-
-    btn.onclick = function() {
-        if (isMobile) {
-            window.open('FTS Field Aid.pdf', '_blank');
-        } else {
-            modal.style.display = 'block';
-        }
-    }
-
-    span.onclick = function() {
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-
-    // Handling checkboxes for sections and items
-    const sectionCheckboxes = document.querySelectorAll('.section-checkbox');
-    sectionCheckboxes.forEach(sectionCheckbox => {
-        addClickOrTouchEventListener(sectionCheckbox, function () {
-            const section = this.closest('section');
-            const itemCheckboxes = section.querySelectorAll('.item-checkbox');
-            itemCheckboxes.forEach(itemCheckbox => {
-                itemCheckbox.checked = this.checked;
-            });
-        });
+  // Market Visit Checkboxes
+  const sectionCheckboxes = document.querySelectorAll('#market-visit-checklist .section-checkbox');
+  sectionCheckboxes.forEach(sectionCheckbox => {
+    addClickOrTouchEventListener(sectionCheckbox, function () {
+      const section = this.closest('section');
+      if (!section) return;
+      const itemCheckboxes = section.querySelectorAll('.item-checkbox');
+      itemCheckboxes.forEach(itemCheckbox => {
+        itemCheckbox.checked = this.checked;
+        storeCheckboxState(itemCheckbox);
+      });
+      storeCheckboxState(sectionCheckbox);
     });
+  });
 
-    const itemCheckboxes = document.querySelectorAll('.item-checkbox');
-    itemCheckboxes.forEach(itemCheckbox => {
-        addClickOrTouchEventListener(itemCheckbox, function () {
-            const section = this.closest('section');
-            const sectionCheckbox = section.querySelector('.section-checkbox');
-            const allChecked = section.querySelectorAll('.item-checkbox:checked').length === section.querySelectorAll('.item-checkbox').length;
-            sectionCheckbox.checked = allChecked;
-        });
+  const itemCheckboxes = document.querySelectorAll('#market-visit-checklist .item-checkbox');
+  itemCheckboxes.forEach(itemCheckbox => {
+    addClickOrTouchEventListener(itemCheckbox, function () {
+      const section = this.closest('section');
+      if (!section) return;
+      const sectionCheckbox = section.querySelector('.section-checkbox');
+      if (sectionCheckbox) {
+        const allChecked = (section.querySelectorAll('.item-checkbox:checked').length === section.querySelectorAll('.item-checkbox').length);
+        sectionCheckbox.checked = allChecked;
+        storeCheckboxState(sectionCheckbox);
+      }
+      storeCheckboxState(itemCheckbox);
     });
+  });
+
+  // Load existing states
+  loadCheckboxStates();
+
+  // Key Metrics placeholders (no longer used in HTML, but no harm leaving them)
+  document.getElementById('via-metrics').textContent = 'Top Gains: +10% Premium Sales';
+  document.getElementById('sac-metrics').textContent = 'Customer Retention: 85%';
+
+  // PWA: Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+
+  /***************************************************
+   * Utility Functions
+   ***************************************************/
+  function storeCheckboxState(checkbox) {
+    if (!checkbox || !checkbox.closest) return;
+    const section = checkbox.closest('section');
+    if (!section) return;
+    const uniqueId = section.id + '_' + checkbox.textContent.trim();
+    localStorage.setItem(uniqueId, checkbox.checked);
+  }
+
+  function loadCheckboxStates() {
+    // Only check within #market-visit-checklist
+    const allCheckboxes = document.querySelectorAll('#market-visit-checklist .section-checkbox, #market-visit-checklist .item-checkbox');
+    allCheckboxes.forEach(checkbox => {
+      const section = checkbox.closest('section');
+      if (!section) return;
+      const uniqueId = section.id + '_' + checkbox.textContent.trim();
+      const storedValue = localStorage.getItem(uniqueId);
+      checkbox.checked = storedValue === 'true';
+    });
+  }
 });
 
-function toggleMenu() {
-    document.getElementById('nav-menu').classList.toggle('show');
+// External functions
+function redirectToSalesforce() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const appUrl = 'salesforce1://valvoline.my.salesforce.com/';
+  const webUrl = 'https://valvoline.my.salesforce.com/';
+  if (isMobile) {
+    const timeout = setTimeout(() => { window.location.href = webUrl; }, 2000);
+    window.location.href = appUrl;
+    window.addEventListener('blur', () => clearTimeout(timeout));
+  } else {
+    window.location.href = webUrl;
+  }
 }
 
-function redirectToSalesforce() {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const appUrl = 'salesforce1://valvoline.my.salesforce.com/';
-    const webUrl = 'https://valvoline.my.salesforce.com/';
+function generateRecapEmail() {
+  const subject = encodeURIComponent("FTS Visit Recap");
+  const body = encodeURIComponent("Team,\n\nHere's a quick summary of today's visit:\n\n- Objectives covered:\n- Key metrics:\n- Next steps:\n\nThanks,\n[Your Name]");
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+}
 
-    if (isMobile) {
-        const timeout = setTimeout(() => {
-            // If the app did not open, navigate to the web URL
-            window.location.href = webUrl;
-        }, 2000); // 2 seconds delay
-
-        // Try to open the app
-        window.location.href = appUrl;
-
-        // Clear the timeout if the app opens successfully
-        window.addEventListener('blur', () => clearTimeout(timeout));
-    } else {
-        window.location.href = webUrl;
-    }
+function downloadOfflineVersion() {
+  window.open('FTS Field Aid.pdf', '_blank');
 }
