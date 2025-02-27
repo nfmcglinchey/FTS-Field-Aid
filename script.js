@@ -301,11 +301,7 @@ function redirectToSalesforce() {
 }
 
 function generateRecapEmail() {
-  const subject = encodeURIComponent("FTS Visit Recap");
-  const body = encodeURIComponent(
-    "Team,\n\nHere's a quick summary of today's visit:\n\n- Objectives covered:\n- Key metrics:\n- Next steps:\n\nThanks,\n[Your Name]"
-  );
-  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  window.location.href = "https://nfmcglinchey.github.io/Recap/";
 }
 
 function downloadOfflineVersion() {
