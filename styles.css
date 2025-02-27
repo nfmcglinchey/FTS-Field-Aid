@@ -529,9 +529,9 @@ footer a:hover {
   button {
     font-size: 14px;
   }
-   /* Debug snippet to identify overflowing elements */
+   /* Debug snippet to identify overflowing elements
 * {
   outline: 1px solid red !important;
-}
+}*/
 
 }
