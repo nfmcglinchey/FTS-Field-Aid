@@ -11,13 +11,13 @@
       "sizes": "200x200",
       "type": "image/jpeg"
     }
-    /* If you add Apple-specific icons or any other sizes,
+    //* If you add Apple-specific icons or any other sizes,
        just insert them here. e.g.:
        {
          "src": "apple-icon-180.png",
          "sizes": "180x180",
          "type": "image/png"
        }
-    */
+   
   ]
 }
