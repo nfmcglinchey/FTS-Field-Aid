@@ -322,7 +322,7 @@ button:hover {
 
 /* To-Do List Card */
 .todo-list {
-  display: inline-block;
+  display: block;
   text-align: left;
   width: 100%;
   max-width: 500px;
