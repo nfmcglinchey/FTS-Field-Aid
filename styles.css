@@ -339,14 +339,21 @@ button:hover {
   font-size: 1.2rem;
 }
 
-.todo-list input.todo-input {
-  width: calc(100% - 110px);
-  padding: 8px;
-  font-size: 16px;
-  margin-right: 5px;
-  box-sizing: border-box;
-  display: inline-block;
-  vertical-align: middle;
+.todo-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;   /* allows wrapping on smaller screens */
+  align-items: center;
+  gap: 5px;          /* small spacing between elements */
+}
+
+/* Let the input grow/shrink, and the button stay sized to its content */
+.todo-input-wrapper input.todo-input {
+  flex: 1 1 auto;    /* grows to fill space but can shrink */
+  min-width: 120px;  /* ensures it never collapses too small */
+}
+
+.todo-input-wrapper button.todo-add {
+  flex: 0 0 auto;    /* keeps button at its natural size */
 }
 
 .todo-list button.todo-add {
