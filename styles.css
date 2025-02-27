@@ -132,7 +132,6 @@ main {
   position: relative;
 }
 
-/* Collapsible Header (Clickable) */
 .collapsible-header {
   cursor: pointer;
   margin: 0;
@@ -149,7 +148,6 @@ main {
   font-size: 1.2em;
 }
 
-/* Collapsible Content (Initially hidden) */
 .collapsible-content {
   display: none;
   padding: 10px;
@@ -181,7 +179,6 @@ ul ul {
   word-break: break-word;
 }
 
-/* “Select All” label */
 .select-all-label {
   display: inline-block;
   margin: 10px 0;
@@ -202,7 +199,7 @@ button {
   text-align: center;
   font-size: 16px;
   max-width: 300px;
-  width: 90%;
+  /* Removed width: 90% to avoid conflicts */
 }
 
 button:hover {
@@ -323,6 +320,7 @@ button:hover {
   margin-bottom: 15px;
 }
 
+/* To-Do List Card */
 .todo-list {
   display: inline-block;
   text-align: left;
@@ -339,25 +337,26 @@ button:hover {
   font-size: 1.2rem;
 }
 
+/* Flexbox wrapper for input and button */
 .todo-input-wrapper {
   display: flex;
-  flex-wrap: wrap;   /* allows wrapping on smaller screens */
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
   align-items: center;
-  gap: 5px;          /* small spacing between elements */
+  gap: 5px;       /* small spacing between elements */
 }
 
-/* Let the input grow/shrink, and the button stay sized to its content */
+/* Input styling within the wrapper */
 .todo-input-wrapper input.todo-input {
-  flex: 1 1 auto;    /* grows to fill space but can shrink */
-  min-width: 120px;  /* ensures it never collapses too small */
+  flex: 1 1 auto;   /* grows/shrinks to fill space */
+  min-width: 120px; /* prevents collapsing too far */
+  padding: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
+/* Button styling within the wrapper */
 .todo-input-wrapper button.todo-add {
-  flex: 0 0 auto;    /* keeps button at its natural size */
-}
-
-.todo-list button.todo-add {
-  width: 100px;
+  flex: 0 0 auto;   /* maintains natural size */
   padding: 8px 12px;
   font-size: 16px;
   cursor: pointer;
@@ -365,10 +364,9 @@ button:hover {
   background-color: #0056b3;
   color: white;
   border-radius: 4px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
+/* To-Do List Items */
 .todo-list ul.todo-items {
   list-style: none;
   padding: 0;
@@ -428,7 +426,7 @@ body.dark-mode .collapsible-content {
   color: #ccc;
 }
 
-body.dark-mode .select-all-label, 
+body.dark-mode .select-all-label,
 body.dark-mode .item-text {
   color: #ccc;
 }
@@ -493,16 +491,13 @@ footer a:hover {
     width: 90%;
     margin: 10px;
   }
-
+  
   main {
     padding: 10px;
   }
   .collapsible {
     max-width: 100%;
     margin: 0 0 10px 0;
-  }
-  button {
-    max-width: 100%;
   }
   #on-location-checklist-content {
     width: 100%;
@@ -527,8 +522,4 @@ footer a:hover {
   button {
     font-size: 14px;
   }
-  .todo-list input.todo-input {
-    width: calc(100% - 100px);
-  }
 }
-
