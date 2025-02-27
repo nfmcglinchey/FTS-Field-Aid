@@ -524,3 +524,17 @@ footer a:hover {
     width: calc(100% - 100px);
   }
 }
+
+@media (max-width: 600px) {
+  .todo-list {
+    max-width: 100%;
+    display: block; 
+    margin: 0 auto;
+  }
+  .todo-list input.todo-input,
+  .todo-list button.todo-add {
+    display: block;
+    width: 100% !important;
+    margin: 5px 0;
+  }
+}
