@@ -426,6 +426,11 @@ body.dark-mode .item-text {
   color: #ccc;
 }
 
+body.dark-mode .todo-list {
+  background-color: #2b2b2b;
+  color: #ccc;
+}
+
 /* -----------------------------------------
    Footer
 ----------------------------------------- */
