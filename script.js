@@ -256,19 +256,20 @@ document.addEventListener('DOMContentLoaded', function () {
   renderTodos();
 
   // DARK MODE TOGGLE
-  const themeToggleBtn = document.getElementById('themeToggle');
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('isDarkMode', document.body.classList.contains('dark-mode'));
-    });
-  }
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode', themeToggle.checked);
+    localStorage.setItem('isDarkMode', themeToggle.checked);
+  });
+}
 
-  // Load dark mode preference
-  const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
-  if (isDarkMode) {
-    document.body.classList.add('dark-mode');
-  }
+// Load dark mode preference on page load
+const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+if (isDarkMode) {
+  document.body.classList.add('dark-mode');
+  themeToggle.checked = true;
+}
 
   // FEEDBACK BUTTON
   const feedbackBtn = document.getElementById('feedbackBtn');
