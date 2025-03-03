@@ -1,13 +1,6 @@
 /* -----------------------------------------
    Global
 ----------------------------------------- */
-html {
-  box-sizing: border-box;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -41,6 +34,18 @@ header {
 .logo {
   display: block;
   margin: 0 auto;
+}
+
+/* Default (Light Mode) Header */
+header {
+  background-color: #007bff; /* Existing blue */
+}
+
+/* Dark Mode: Progressive Gray Gradient */
+body.dark-mode header {
+  /* Remove the old background-color and replace with a gradient */
+  background: linear-gradient(135deg, #555, #222);
+  color: #fff; /* Ensure text remains visible against darker background */
 }
 
 /* -----------------------------------------
@@ -139,6 +144,7 @@ main {
   position: relative;
 }
 
+/* Collapsible Header (Clickable) */
 .collapsible-header {
   cursor: pointer;
   margin: 0;
@@ -155,6 +161,7 @@ main {
   font-size: 1.2em;
 }
 
+/* Collapsible Content (Initially hidden) */
 .collapsible-content {
   display: none;
   padding: 10px;
@@ -186,6 +193,7 @@ ul ul {
   word-break: break-word;
 }
 
+/* “Select All” label */
 .select-all-label {
   display: inline-block;
   margin: 10px 0;
@@ -206,7 +214,7 @@ button {
   text-align: center;
   font-size: 16px;
   max-width: 300px;
-  /* Removed width: 90% to avoid conflicts */
+  width: 90%;
 }
 
 button:hover {
@@ -327,16 +335,16 @@ button:hover {
   margin-bottom: 15px;
 }
 
-/* To-Do List Card */
 .todo-list {
-  display: block;
-  text-align: left;
-  width: 100%;
+  display: block; /* Was inline-block; set to block to avoid “bleeding” */
+  margin: 0 auto; /* Centers the card */
+  width: 90%;     /* Keeps it from stretching the entire container */
   max-width: 500px;
   background-color: #fff;
   padding: 15px;
   border-radius: 5px;
-}
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional shadow for a card look */
+} /* <-- Make sure you have this closing brace */
 
 .todo-list h2 {
   margin-top: 0;
@@ -344,26 +352,18 @@ button:hover {
   font-size: 1.2rem;
 }
 
-/* Flexbox wrapper for input and button */
-.todo-input-wrapper {
-  display: flex;
-  flex-wrap: wrap; /* allows wrapping on smaller screens */
-  align-items: center;
-  gap: 5px;       /* small spacing between elements */
-}
-
-/* Input styling within the wrapper */
-.todo-input-wrapper input.todo-input {
-  flex: 1 1 auto;   /* grows/shrinks to fill space */
-  min-width: 120px; /* prevents collapsing too far */
+.todo-list input.todo-input {
+  width: calc(100% - 110px);
   padding: 8px;
   font-size: 16px;
+  margin-right: 5px;
   box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* Button styling within the wrapper */
-.todo-input-wrapper button.todo-add {
-  flex: 0 0 auto;   /* maintains natural size */
+.todo-list button.todo-add {
+  width: 100px;
   padding: 8px 12px;
   font-size: 16px;
   cursor: pointer;
@@ -371,9 +371,10 @@ button:hover {
   background-color: #0056b3;
   color: white;
   border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* To-Do List Items */
 .todo-list ul.todo-items {
   list-style: none;
   padding: 0;
@@ -433,13 +434,8 @@ body.dark-mode .collapsible-content {
   color: #ccc;
 }
 
-body.dark-mode .select-all-label,
+body.dark-mode .select-all-label, 
 body.dark-mode .item-text {
-  color: #ccc;
-}
-
-body.dark-mode .todo-list {
-  background-color: #2b2b2b;
   color: #ccc;
 }
 
@@ -498,13 +494,16 @@ footer a:hover {
     width: 90%;
     margin: 10px;
   }
-  
+
   main {
     padding: 10px;
   }
   .collapsible {
     max-width: 100%;
     margin: 0 0 10px 0;
+  }
+  button {
+    max-width: 100%;
   }
   #on-location-checklist-content {
     width: 100%;
@@ -529,9 +528,135 @@ footer a:hover {
   button {
     font-size: 14px;
   }
-   /* Debug snippet to identify overflowing elements
-* {
-  outline: 1px solid red !important;
-}*/
-
+  .todo-list input.todo-input {
+    width: calc(100% - 100px);
+  }
 }
+
+/* Switch container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+/* Slider track */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #eee; /* Light “day” track color */
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* The knob, which now shows icons instead of just a circle */
+.slider:before {
+  content: "☀";              /* Sun icon by default */
+  color: #FFC107;            /* Sun color (gold) */
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;    /* Knob background */
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* When checked, show the moon icon and shift the knob right */
+input:checked + .slider {
+  background-color: #333;    /* Dark “night” track color */
+}
+
+input:checked + .slider:before {
+  content: "🌙";
+  color: #2196F3;            /* Moon color (blue) */
+  transform: translateX(26px);
+}
+
+/* Move the knob to the right when checked */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Dark Mode Search Bar */
+body.dark-mode .primary-nav input[type="text"] {
+  background-color: #333;   /* Dark background */
+  color: #fff;             /* Light text */
+  border: 1px solid #555;  /* Subtle border */
+}
+body.dark-mode .primary-nav input[type="text"]::placeholder {
+  color: #aaa; /* Lighter placeholder text */
+}
+
+/* Dark Mode To-Do List Container */
+body.dark-mode .todo-list {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555; /* Subtle border to separate from background */
+}
+
+/* Dark Mode To-Do List Input */
+body.dark-mode .todo-list input.todo-input {
+  background-color: #444;  
+  color: #fff;
+  border: 1px solid #666;
+}
+body.dark-mode .todo-list input.todo-input::placeholder {
+  color: #aaa;
+}
+
+/* Dark Mode To-Do List Button */
+body.dark-mode .todo-list button.todo-add {
+  background-color: #555;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+/* Dark mode for the On Location Checklist container */
+body.dark-mode #on-location-checklist-content {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555; /* Subtle border */
+}
+
+/* Dark mode for the collapsible sub-sections (e.g., Strategic/Key Account) */
+body.dark-mode .checklist-content {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Dark mode for the FTS Tools grid container */
+body.dark-mode .fts-tools-grid {
+  background-color: #333;
+  border: 1px solid #555;
+}
+
+/* Dark mode for individual tool cards */
+body.dark-mode .tool-card {
+  background-color: #444; 
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* If you want link text inside the tool cards to stand out, you can do: */
+body.dark-mode .tool-card h3 {
+  color: #66b3ff; /* Lighter shade of blue, adjust as needed */
+}
+
