@@ -31,6 +31,17 @@ header {
   position: relative;
 }
 
+header {
+  position: relative; /* Ensure the toggle can be positioned inside the header */
+}
+
+header .switch {
+  position: absolute;
+  top: 10px;   /* Adjust as needed */
+  left: 10px;  /* Adjust as needed */
+  z-index: 1010; /* So it stays on top if needed */
+}
+
 .logo {
   display: block;
   margin: 0 auto;
