@@ -17,16 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
   collapsibleHeaders.forEach(header => {
     header.addEventListener('click', () => {
-      // Toggle arrow and toggle content
       const arrow = header.querySelector('.arrow');
       const content = header.nextElementSibling;
       if (!content) return;
       if (content.style.display === 'block') {
         content.style.display = 'none';
-        if (arrow) arrow.textContent = '►'; // or &#9654;
+        if (arrow) arrow.textContent = '►';
       } else {
         content.style.display = 'block';
-        if (arrow) arrow.textContent = '▼'; // or some down arrow
+        if (arrow) arrow.textContent = '▼';
       }
     });
   });
@@ -66,6 +65,65 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /***************
+   * DARK MODE
+   ***************/
+  const storedPreference = localStorage.getItem('isDarkMode');
+  const themeToggle = document.getElementById('themeToggle');
+
+  // 1. If user has a saved preference, use it:
+  if (storedPreference !== null) {
+    if (storedPreference === 'true') {
+      document.body.classList.add('dark-mode');
+      if (themeToggle) themeToggle.checked = true;
+    } else {
+      document.body.classList.remove('dark-mode');
+      if (themeToggle) themeToggle.checked = false;
+    }
+  }
+  // 2. Else, if no preference, try geolocation-based detection:
+  else if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`)
+        .then(response => response.json())
+        .then(data => {
+          const sunrise = new Date(data.results.sunrise);
+          const sunset = new Date(data.results.sunset);
+          const now = new Date();
+          // If it's before sunrise or after sunset, set dark mode
+          if (now < sunrise || now > sunset) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('isDarkMode', 'true');
+            if (themeToggle) themeToggle.checked = true;
+          } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('isDarkMode', 'false');
+            if (themeToggle) themeToggle.checked = false;
+          }
+        })
+        .catch(err => console.error('Sunrise-Sunset API error:', err));
+    }, error => {
+      console.error('Geolocation error:', error);
+      // If geolocation fails, fallback to a default (light) mode
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('isDarkMode', 'false');
+      if (themeToggle) themeToggle.checked = false;
+    });
+  }
+
+  // 3. Let the user override manually (always available):
+  if (themeToggle) {
+    themeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode', themeToggle.checked);
+      localStorage.setItem('isDarkMode', themeToggle.checked);
+    });
+  }
+
+  /***************
+   * SCROLL HELPER
+   ***************/
   function scrollToSection(section) {
     const headerOffset = document.querySelector('header').offsetHeight + 10;
     const elementPosition = section.getBoundingClientRect().top;
@@ -73,41 +131,47 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
   }
 
-  // SEARCH FUNCTIONALITY (expands matches instead of hiding everything else)
+  /***************
+   * SEARCH
+   ***************/
   const searchInput = document.getElementById('search');
-  searchInput.addEventListener('input', () => {
-    const query = searchInput.value.toLowerCase();
-    const sections = document.querySelectorAll('main .collapsible');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const sections = document.querySelectorAll('main .collapsible');
 
-    if (!query) {
-      // If query is empty, show all sections again, but re-collapse them to default
-      sections.forEach(section => {
-        section.style.display = '';
-      });
-      return;
-    }
-
-    sections.forEach(section => {
-      const text = section.textContent.toLowerCase();
-      if (text.includes(query)) {
-        // Show & expand
-        section.style.display = 'block';
-        const content = section.querySelector('.collapsible-content');
-        const arrow = section.querySelector('.arrow');
-        if (content) {
-          content.style.display = 'block';
-        }
-        if (arrow) {
-          arrow.textContent = '▼';
-        }
-      } else {
-        // Hide if no match
-        section.style.display = 'none';
+      if (!query) {
+        // If query is empty, show all sections again, but re-collapse them
+        sections.forEach(section => {
+          section.style.display = '';
+        });
+        return;
       }
-    });
-  });
 
-  // “ON LOCATION” CHECKLIST SWITCHER
+      sections.forEach(section => {
+        const text = section.textContent.toLowerCase();
+        if (text.includes(query)) {
+          // Show & expand
+          section.style.display = 'block';
+          const content = section.querySelector('.collapsible-content');
+          const arrow = section.querySelector('.arrow');
+          if (content) {
+            content.style.display = 'block';
+          }
+          if (arrow) {
+            arrow.textContent = '▼';
+          }
+        } else {
+          // Hide if no match
+          section.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  /***************
+   * ON LOCATION CHECKLIST SWITCHER
+   ***************/
   const keyAccountButton = document.getElementById('key-account-button');
   const strategicAccountButton = document.getElementById('strategic-account-button');
   const keyAccountContent = document.getElementById('key-account-content');
@@ -140,8 +204,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // CHECKBOX “SELECT ALL” FUNCTIONALITY
-  // This will store or load states from localStorage just like before
+  /***************
+   * SELECT ALL CHECKBOXES
+   ***************/
   const sectionSelectAllBoxes = document.querySelectorAll('.section-checkbox');
   sectionSelectAllBoxes.forEach(selectAllBox => {
     selectAllBox.addEventListener('change', function () {
@@ -156,7 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Item checkboxes
   const itemCheckboxes = document.querySelectorAll('.item-checkbox');
   itemCheckboxes.forEach(itemCheckbox => {
     itemCheckbox.addEventListener('change', function () {
@@ -173,11 +237,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // LOAD existing checkbox states
+  // Load existing checkbox states
   loadCheckboxStates();
 
   function storeCheckboxState(checkbox) {
-    // Use a unique ID or fallback to text. If items change text, localStorage won't match.
     const labelText = (checkbox.nextElementSibling && checkbox.nextElementSibling.classList.contains('item-text'))
       ? checkbox.nextElementSibling.textContent.trim()
       : checkbox.textContent.trim();
@@ -188,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function loadCheckboxStates() {
-    // Grab all relevant checkboxes
     const allBoxes = document.querySelectorAll('.section-checkbox, .item-checkbox');
     allBoxes.forEach(box => {
       const labelText = (box.nextElementSibling && box.nextElementSibling.classList.contains('item-text'))
@@ -202,7 +264,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // TO-DO LIST
+  /***************
+   * TO-DO LIST
+   ***************/
   const todoInput = document.getElementById('todoInput');
   const addTodoBtn = document.getElementById('addTodoBtn');
   const todoItems = document.getElementById('todoItems');
@@ -246,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
     addTodoBtn.addEventListener('click', function() {
       const text = todoInput.value.trim();
       if (text !== '') {
-        todos.push({ text: text, completed: false });
+        todos.push({ text, completed: false });
         localStorage.setItem('todos', JSON.stringify(todos));
         todoInput.value = '';
         renderTodos();
@@ -255,23 +319,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   renderTodos();
 
-  // DARK MODE TOGGLE
-const themeToggle = document.getElementById('themeToggle');
-if (themeToggle) {
-  themeToggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark-mode', themeToggle.checked);
-    localStorage.setItem('isDarkMode', themeToggle.checked);
-  });
-}
-
-// Load dark mode preference on page load
-const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
-if (isDarkMode) {
-  document.body.classList.add('dark-mode');
-  themeToggle.checked = true;
-}
-
-  // FEEDBACK BUTTON
+  /***************
+   * FEEDBACK BUTTON
+   ***************/
   const feedbackBtn = document.getElementById('feedbackBtn');
   if (feedbackBtn) {
     feedbackBtn.addEventListener('click', () => {
@@ -282,22 +332,24 @@ if (isDarkMode) {
     });
   }
 
-  // SERVICE WORKER
+  /***************
+   * PWA SERVICE WORKER
+   ***************/
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        console.log('ServiceWorker registration successful with scope:', registration.scope);
       }, function(err) {
-        console.log('ServiceWorker registration failed: ', err);
+        console.log('ServiceWorker registration failed:', err);
       });
     });
   }
 });
 
-// EXTERNAL (GLOBAL) FUNCTIONS
+/***************
+ * GLOBAL FUNCTIONS
+ ***************/
 function redirectToSalesforce() {
-  // Just open the web version. 
-  // If you want the custom "app fallback" logic, you can add it here.
   window.location.href = 'https://valvoline.my.salesforce.com/';
 }
 
