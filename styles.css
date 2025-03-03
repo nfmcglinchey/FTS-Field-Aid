@@ -583,10 +583,17 @@ input:checked + .slider {
   background-color: #333;    /* Dark “night” track color */
 }
 
+/* When checked, show the moon and use a dark-blue knob background */
 input:checked + .slider:before {
   content: "🌙";
-  color: #2196F3;            /* Moon color (blue) */
+  background-color: #1e3a8a;  /* dark blue */
+  color: #FFC107;            /* or whatever icon color you want */
   transform: translateX(26px);
+}
+
+/* In dark mode, if the toggle is NOT checked (sun icon), make the knob dark blue */
+body.dark-mode input[type="checkbox"]:not(:checked) + .slider:before {
+  background-color: #1e3a8a; /* or any dark-blue shade */
 }
 
 /* Move the knob to the right when checked */
