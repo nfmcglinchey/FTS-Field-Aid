@@ -8,25 +8,27 @@
   <meta name="description" content="FTS Field Aid Checklist for improving field service management and customer satisfaction.">
   <meta name="keywords" content="FTS, Field Aid, Checklist, Field Service, Customer Service">
   <title>FTS Field Aid Checklist</title>
-  
+
   <!-- PWA & Apple-Specific Meta Tags -->
   <meta name="theme-color" content="#007bff">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180.png">
-  
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- HEADER SECTION -->
   <header>
-    <img src="VGO Logo.png" class="logo" alt="Valvoline Global Products Logo" width="200" height="200">
+    <img src="VGO Logo.png" class="logo" alt="Valvoline Global Products Logo" width="150" height="150">
     <h1>FTS Field Aid</h1>
-    <!-- Toggle Dark/Light Theme -->
-    <button class="toggle-btn" id="themeToggle">Toggle Light/Dark</button>
-  </header>
-  
+    <!-- Toggle Dark/Light Theme Switch -->
+	<label class="switch">
+  	<input type="checkbox" id="themeToggle">
+  	<span class="slider"></span>
+	</label>
+   </header>
+
   <!-- NAVIGATION BAR -->
   <nav class="primary-nav">
     <div class="hamburger" onclick="toggleMenu()">
@@ -44,25 +46,23 @@
       </li>
     </ul>
   </nav>
-  
+
   <!-- MAIN CONTENT -->
   <main>
     <!-- Enhancement Section (Centered) -->
     <section class="enhancement-section">
       <!-- Feedback Button -->
       <button class="toggle-btn" id="feedbackBtn">Send Feedback</button>
-      
+
       <!-- To-Do List -->
       <div class="todo-list">
         <h2>My To-Do List</h2>
-        <div class="todo-input-wrapper">
-          <input type="text" id="todoInput" class="todo-input" placeholder="Add a new task">
-          <button id="addTodoBtn" class="todo-add">Add Task</button>
-        </div>
+        <input type="text" id="todoInput" class="todo-input" placeholder="Add a new task">
+        <button id="addTodoBtn" class="todo-add">Add Task</button>
         <ul id="todoItems" class="todo-items"></ul>
       </div>
     </section>
-    
+
     <!-- MARKET VISIT CHECKLIST SECTION -->
     <section id="market-visit-checklist" class="collapsible">
       <h2 class="collapsible-header">
@@ -75,7 +75,7 @@
           <input type="checkbox" class="section-checkbox market-visit-select-all">
           Select All
         </label>
-        
+
         <!-- PART 1: PRE-VISIT -->
         <section id="pre-visit" class="collapsible">
           <h2 class="collapsible-header">
@@ -87,7 +87,7 @@
               <input type="checkbox" class="section-checkbox">
               Select All
             </label>
-            
+
             <h3>Salesforce Account Review</h3>
             <ul>
               <li class="checklist-item">
@@ -107,7 +107,7 @@
                 <span class="item-text">Identify active promotions for the customer in Salesforce.</span>
               </li>
             </ul>
-            
+
             <h3>Performance Analytics</h3>
             <ul>
               <li class="checklist-item">
@@ -119,7 +119,7 @@
                 <span class="item-text">Note relevant data on sales, services sold, premium percentages, etc.</span>
               </li>
             </ul>
-            
+
             <h3>Define Training Objectives</h3>
             <ul>
               <li class="checklist-item">
@@ -129,7 +129,7 @@
             </ul>
           </div>
         </section>
-        
+
         <!-- PART 2: DM MEETING -->
         <section id="dm-meeting" class="collapsible">
           <h2 class="collapsible-header">
@@ -141,7 +141,7 @@
               <input type="checkbox" class="section-checkbox">
               Select All
             </label>
-            
+
             <h3>Create Pre-Cap for DM</h3>
             <ul>
               <li class="checklist-item">
@@ -183,7 +183,7 @@
             </ul>
           </div>
         </section>
-        
+
         <!-- PART 3: OBJECTION HANDLING -->
         <section id="objection-handling" class="collapsible">
           <h2 class="collapsible-header">
@@ -195,7 +195,7 @@
               <input type="checkbox" class="section-checkbox">
               Select All
             </label>
-            
+
             <ul>
               <li class="checklist-item">
                 <input type="checkbox" class="item-checkbox">
@@ -204,7 +204,7 @@
             </ul>
           </div>
         </section>
-        
+
         <!-- PART 4: LOCATION VISIT -->
         <section id="location-visit" class="collapsible">
           <h2 class="collapsible-header">
@@ -216,7 +216,7 @@
               <input type="checkbox" class="section-checkbox">
               Select All
             </label>
-            
+
             <ul>
               <li class="checklist-item">
                 <input type="checkbox" class="item-checkbox">
@@ -238,11 +238,11 @@
             </ul>
           </div>
         </section>
-        
+
         <!-- PART 5: POST-VISIT -->
         <section id="post-visit" class="collapsible">
           <h2 class="collapsible-header">
-            Part 5: Post-Vist
+            Part 5: Post-Visit
             <span class="arrow">&#9654;</span>
           </h2>
           <div class="collapsible-content">
@@ -250,7 +250,7 @@
               <input type="checkbox" class="section-checkbox">
               Select All
             </label>
-            
+
             <ul>
               <li class="checklist-item">
                 <input type="checkbox" class="item-checkbox">
@@ -272,12 +272,12 @@
             <button onclick="generateRecapEmail()">Generate Recap Email</button>
           </div>
         </section>
-        
+
         <!-- Offline Access Option -->
         <button onclick="downloadOfflineVersion()">Download Offline Version (PDF)</button>
       </div>
     </section>
-    
+
     <!-- ON LOCATION CHECKLIST -->
     <section id="on-location-checklist" class="collapsible">
       <h2 class="collapsible-header">
@@ -317,7 +317,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- FTS TOOLS SECTION -->
     <section id="fts-tools" class="collapsible">
       <h2 class="collapsible-header">
@@ -357,10 +357,20 @@
             <h3>Territory Files</h3>
             <p>Access territory-specific documents and data.</p>
           </a>
+	   <a href="https://pisheets.valvolineglobal.com/#/home"
+             target="_blank" class="tool-card">
+            <h3>Product Information Portal</h3>
+            <p>Access Valvoline’s global product information portal.</p>
+          </a>
+	   <a href="https://valvoline.widencollective.com/dam/dashboard"
+             target="_blank" class="tool-card">
+            <h3>Digital Asset Manager</h3>
+            <p>Single source for all Valvoline digital assets.</p>
+          </a>
         </div>
       </div>
     </section>
-    
+
     <!-- PDF SECTION -->
     <section id="pdf-section" class="collapsible">
       <h2 class="collapsible-header">
@@ -376,13 +386,13 @@
       </div>
     </section>
   </main>
-  
+
   <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Valvoline Global Products. All rights reserved.</p>
     <p id="phone-number"><a href="tel:+18008326825">1-800-TeamVal</a></p>
   </footer>
-  
+
   <!-- Scripts loaded at the bottom so DOM elements are available -->
   <script src="script.js"></script>
 </body>
